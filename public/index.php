@@ -1,3 +1,18 @@
+<!-- Punto de entrada con los includes -->
+
+<?php include 'partials/head.php';?>
+<?php include 'partials/header.php';?>
+
+<main>
+    <?php include 'sections/hero.php';?>
+    <?php include 'sections/videos.php';?>
+    <?php include 'sections/galeria.php';?>
+    <?php include 'sections/contacto.php';?>
+</main>
+
+<?php include 'partials/footer.php';?>
+
+<!-- 
 <!DOCTYPE html>
 <html lan="es">
 
@@ -8,7 +23,7 @@
     <meta name="description" content="Web dinamica de servicios de video con drones">
     <meta name="keywords" content="video,dron,aire,cielo,eventos,record,air,vista">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/style.css">
 </head>
 
 <body>
@@ -39,26 +54,26 @@
             </button>
         </div>
     </header>
-    <main>
+    <main> -->
         <!-- 1. Sección contenedora del hero -->
-        <section class="hero">
+      <!--  <section class="hero"> -->
             <!-- 2. Fondo: aquí irá tu imagen aérea -->
-            <div class="hero-back">
+        <!--    <div class="hero-back">
                 <img src="assets/img/hero_img.jpeg" alt="Fondo hero">
-            </div>
+            </div> -->
             <!-- 3. Contenido centrado encima del fondo -->
-            <div class="container hero-content">
+       <!--     <div class="container hero-content"> -->
                 <!-- 4. Título principal -->
-                <h1 class="hero-title">
+        <!--        <h1 class="hero-title">
                     Eleva tu contenido<br>al <em>siguiente nivel</em>
-                </h1>
+                </h1> -->
                 <!-- 5. Texto descriptivo -->
-                <p class="hero-subtitle">
+          <!--      <p class="hero-subtitle">
                     Transformamos ideas en imágenes que vuelan alto, capturando cada
                     detalle desde ángulos que inspiran y sorprenden.
-                </p>
+                </p> -->
                 <!-- 6. Botones -->
-                <div class="hero-actions">
+          <!--      <div class="hero-actions">
                     <a href="#galeria" class="btn btn--outline">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="1.8">
@@ -76,9 +91,9 @@
                         Ver vídeos
                     </a>
                 </div>
-            </div>
+            </div> -->
             <!-- 7. Barra de categorías -->
-            <div class="services-bar">
+         <!--   <div class="services-bar">
                 <div class="container">
                     <div class="services-grid">
 
@@ -147,62 +162,62 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- ══════════════════════════ VÍDEO & SHORTS ══════════════════════════ -->
-        <section class="section-videos" id="videos">
+      <!--  <section class="section-videos" id="videos">
             <div class="container">
                 <h2 class="section-label light">Vídeo <span>&</span> Shorts</h2>
-                <div class="video-grid">
-                    <!-- Short 1 -->
-                    <div class="video-card video-card--short">
-                        <div class="video-thumb">
-                
+                <div class="video-grid"> -->
+                    <!-- Short 1 --> 
+               <!--     <div class="video-card video-card--short">
+                        <div class="video-thumb"> -->
+
                             <!-- El vídeo -->
-                            <video src="assets/video/short1.mp4" autoplay loop muted playsinline></video>
-                
+                    <!--        <video src="assets/video/short1.mp4" autoplay loop muted playsinline></video> -->
+
                             <!-- El botón de play encima -->
                             <!-- <button class="play-btn" aria-label="Reproducir">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
                                     <polygon points="5 3 19 12 5 21 5 3" />
                                 </svg>
                             </button> -->
-                
-                            <span class="video-label">Sh<span class="dot">●</span>t 1</span>
+
+                 <!--           <span class="video-label">Sh<span class="dot">●</span>t 1</span>
                         </div>
                         <div class="video-meta">
                             <p class="video-title">Short destacado</p>
                             <p class="video-stats">0:40 · 12k vistas</p>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Vídeo principal -->
-                    <div class="video-card video-card--main">
+              <!--      <div class="video-card video-card--main">
                         <div class="video-thumb">
-                            <video src="assets/video/short2.mp4" autoplay loop muted playsinline></video>
+                            <video src="assets/video/short2.mp4" autoplay loop muted playsinline></video> -->
                             <!-- <button class="play-btn" aria-label="Reproducir">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
                                     <polygon points="5 3 19 12 5 21 5 3" />
                                 </svg>
                             </button> -->
-                            <span class="video-label">Vídeo <span class="dot">●</span>incipal</span>
+                   <!--         <span class="video-label">Vídeo <span class="dot">●</span>incipal</span>
                         </div>
                         <div class="video-meta">
                             <p class="video-title">Vídeo principal</p>
                             <p class="video-stats">3:20 · 46k vistas</p>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Short 2 -->
-                    <div class="video-card video-card--short">
+               <!--     <div class="video-card video-card--short">
                         <div class="video-thumb">
-                            <video src="assets/video/short3.mp4" autoplay loop muted playsinline></video>
+                            <video src="assets/video/short3.mp4" autoplay loop muted playsinline></video> -->
                             <!-- <button class="play-btn" aria-label="Reproducir">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
                                     <polygon points="5 3 19 12 5 21 5 3" />
                                 </svg>
                             </button> -->
-                            <span class="video-label">Sh<span class="dot">●</span>t 2</span>
+                      <!--      <span class="video-label">Sh<span class="dot">●</span>t 2</span>
                         </div>
                         <div class="video-meta">
                             <p class="video-title">Behind the scenes</p>
@@ -211,10 +226,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- ════════════════════════ REELS & IMÁGENES ════════════════════════ -->
-        <section class="section-gallery" id="galeria">
+    <!--    <section class="section-gallery" id="galeria">
             <div class="container">
                 <h2 class="section-label">Reels <span>&</span> Imágenes</h2>
                 <div class="photo-grid">
@@ -250,10 +265,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- ══════════════════════════ CONTACTO ══════════════════════════════ -->
-        <section class="section-contact" id="contacto">
+    <!--    <section class="section-contact" id="contacto">
             <div class="container contact-inner">
 
                 <div class="contact-left">
@@ -295,9 +310,9 @@
 
             </div>
         </section>
-    </main>
+    </main> -->
     <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
-    <footer class="site-footer">
+  <!--  <footer class="site-footer">
         <div class="container footer-inner">
             <p>© 2026 Cenit-Sky — Todos los derechos reservados</p>
             <div class="footer-links">
@@ -306,5 +321,6 @@
             </div>
         </div>
     </footer>
-    </body>
-</html>
+</body>
+
+</html> -->

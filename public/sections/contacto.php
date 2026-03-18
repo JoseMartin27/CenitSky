@@ -1,0 +1,40 @@
+
+<section class="section-contact" id="contacto">
+    <div class="container contact-inner">
+        <div class="contact-left">
+            <h2 class="contact-title">Hablemos de<br>tu <em>proyecto</em></h2>
+            <p class="contact-desc">
+                Cuéntame qué necesitas y te preparo un presupuesto sin compromiso.
+                Trabajo en toda la península.
+            </p>
+            <label class="toggle-wrap">
+                <span class="toggle-text">Acepto la política de privacidad</span>
+                <div class="toggle">
+                    <input type="checkbox" id="privacidad" />
+                    <span class="toggle-track"></span>
+                </div>
+            </label>
+        </div>
+        <form class="contact-form" action="/app/controllers/contacto_controller.php" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="hola@ejemplo.com" required />
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" name="direccion" placeholder="Calle, ciudad..." />
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntame en qué puedo ayudarte..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn--dark btn--full">Enviar mensaje</button>
+        </form>
+    </div>
+</section>
