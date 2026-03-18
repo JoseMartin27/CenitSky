@@ -1,7 +1,6 @@
-
 <header>
     <div>
-        <a href="/public/index.php" class="logo">Cenit<span>Sky</span></a>
+        <a href="/MIS_PROYECTOS/CenitSky/public/index.php" class="logo">Cenit-<span>Sky</span></a>
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M10 10 7 7" />
@@ -15,11 +14,11 @@
             <rect x="10" y="8" width="4" height="8" rx="1" />
         </svg>
         <nav>
-            <a href="/public/pages/paisajes.php">Paisajes</a>
-            <a href="/public/pages/aventura.php">Aventura</a>
-            <a href="/public/pages/estructuras.php">Estructuras</a>
-            <a href="#">Servicios</a>
-            <a href="#contacto">Contacto</a>
+            <a href="/MIS_PROYECTOS/CenitSky/public/pages/paisajes.php">Paisajes</a>
+            <a href="/MIS_PROYECTOS/CenitSky/public/pages/estructuras.php">Estructuras</a>
+            <a href="/MIS_PROYECTOS/CenitSky/public/pages/aventura.php">Aventura</a>
+            <a href="/MIS_PROYECTOS/CenitSky/public/pages/noticias.php">Noticias</a>
+            <a href="/MIS_PROYECTOS/CenitSky/public/index.php#contacto">Contacto</a>
         </nav>
         <button class="menuPhone" aria-label="Menú">
             <span></span><span></span><span></span>

@@ -1,7 +1,7 @@
 
 <section class="hero">
     <div class="hero-back">
-        <img src="/public/assets/images/hero_img.jpeg" alt="Fondo hero">
+        <img src="/MIS_PROYECTOS/CenitSky/public/assets/images/hero.jpg" alt="Fondo hero">
     </div>
     <div class="container hero-content">
         <h1 class="hero-title">
@@ -31,7 +31,7 @@
     <div class="services-bar">
         <div class="container">
             <div class="services-grid">
-                <a href="/public/pages/paisajes.php" class="service-card">
+            <a href="/MIS_PROYECTOS/CenitSky/public/pages/paisajes.php" class="service-card">
                     <span class="service-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -43,7 +43,7 @@
                     </span>
                     <span class="service-label">Paisajes</span>
                 </a>
-                <a href="/public/pages/estructuras.php" class="service-card">
+                <a href="/MIS_PROYECTOS/CenitSky/public/pages/estructuras.php" class="service-card">
                     <span class="service-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -59,7 +59,7 @@
                     </span>
                     <span class="service-label">Estructuras</span>
                 </a>
-                <a href="/public/pages/aventura.php" class="service-card">
+                <a href="/MIS_PROYECTOS/CenitSky/public/pages/aventura.php" class="service-card">
                     <span class="service-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -72,7 +72,7 @@
                     </span>
                     <span class="service-label">Aventura</span>
                 </a>
-                <a href="/public/pages/noticias.php" class="service-card">
+                <a href="/MIS_PROYECTOS/CenitSky/public/pages/noticias.php" class="service-card">
                     <span class="service-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
