@@ -3,7 +3,7 @@
 ═══════════════════════════════════════════════════════════════ */
 .hero {
     position: relative;
-    padding-top: 64px;
+    padding-top: 30px;
     min-height: 600px;
 }
 
@@ -18,7 +18,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
 }
 
 .hero-back::after {
@@ -32,7 +32,7 @@
     position: relative;
     z-index: 1;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 60px;
     padding-bottom: 80px;
 }
 
@@ -45,13 +45,19 @@
     margin-bottom: 20px;
 }
 .hero-title em { font-style: italic; color: var(--gold-light); }
+.hero-subtitle em {
+    font-style: var(--font-display); 
+    color: var(--gold-light);
+    
+}
 
 .hero-subtitle {
     max-width: 460px;
     margin: 0 auto 36px;
-    color: rgba(255,255,255,0.7);
-    font-size: 0.95rem;
+    color: var(--white);
+    font-size: 1.3rem;
     line-height: 1.7;
+    font-family: var(--font-display);
 }
 
 .hero-actions {
@@ -65,15 +71,17 @@
 .services-bar {
     position: relative;
     z-index: 10;
-    margin-top: -40px;
-    margin-bottom: -40px;
-    padding: 0 24px;
+    margin-bottom: -50px;
+    
 }
 
 .services-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 15px;
+    max-width: var(--max-w);   /* ← mismo ancho máximo que el resto */
+    margin: 0 auto;
+    padding: 10 12px;
 }
 
 .service-card {
@@ -82,14 +90,14 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 16px 12px;
-    background: var(--gradient);
+    padding: 20px 5px;
     border-radius: 14px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, rgba(30,30,40,0.97) 0%, rgba(50,50,70,0.97) 100%);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
     transition: opacity var(--transition), transform var(--transition);
     cursor: pointer;
 }
-.service-card:hover { opacity: 0.85; transform: translateY(-2px); }
+.service-card:hover { background: linear-gradient(90deg, var(--gold-light), var(--gold-dark)); }
 
 .service-icon {
     display: flex;
@@ -101,7 +109,7 @@
 .service-icon svg { width: 28px; height: 28px; stroke: var(--white); }
 
 .service-label {
-    font-size: 0.7rem;
+    font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -113,8 +121,10 @@
    VÍDEOS
 ═══════════════════════════════════════════════════════════════ */
 .section-videos {
+    position: relative;
+    z-index: 1;
     background: var(--black);
-    padding: 80px 0 70px;
+    padding: 100px 0 70px;
 }
 
 .video-grid {
@@ -165,7 +175,7 @@
 ═══════════════════════════════════════════════════════════════ */
 .section-gallery {
     background: var(--gray-light);
-    padding: 80px 0 60px;
+    padding: 35px 0 70px;
 }
 
 .photo-grid {
@@ -212,7 +222,7 @@
 ═══════════════════════════════════════════════════════════════ */
 .section-contact {
     background: var(--white);
-    padding: 80px 0;
+    padding: 60px 0;
 }
 
 .contact-inner {

@@ -11,6 +11,7 @@
     --gray-mid:    #888;
     --gray-light:  #F0F0F5;
     --white:       #FFFFFF;
+    --brown:        #623B1C;
     --border:      rgba(108,108,154,0.3);
 
     --font-display: 'Cormorant Garamond', Georgia, serif;
@@ -19,7 +20,7 @@
     --radius:    12px;
     --radius-sm:  6px;
     --transition: 0.25s ease;
-    --max-w: 1100px;
+    --max-w: 1280px;
     --gradient: linear-gradient(135deg, rgba(30,30,40,0.85) 0%, rgba(50,50,70,0.85) 100%);
 }
 
@@ -60,14 +61,12 @@ img, video { display: block; max-width: 100%; }
 }
 
 .btn--outline {
-    background: transparent;
-    border: 1.5px solid rgba(255,255,255,0.5);
+    background: var(--gradient);
+    /*border: 1.5px solid rgba(255,255,255,0.5);*/
     color: var(--white);
 }
 .btn--outline:hover {
-    background: var(--white);
-    color: var(--black);
-    border-color: var(--white);
+    background: linear-gradient(90deg, var(--gold-light), var(--gold-dark));
 }
 
 .btn--dark {

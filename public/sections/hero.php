@@ -8,8 +8,8 @@
             Eleva tu contenido<br>al <em>siguiente nivel</em>
         </h1>
         <p class="hero-subtitle">
-            Transformamos ideas en imágenes que vuelan alto, capturando cada
-            detalle desde ángulos que inspiran y sorprenden.
+            Transformamos ideas en imágenes que vuelan alto, <em>capturando cada
+            detalle desde ángulos<br>que inspiran y sorprenden.</em>
         </p>
         <div class="hero-actions">
             <a href="#galeria" class="btn btn--outline">

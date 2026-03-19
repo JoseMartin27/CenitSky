@@ -25,3 +25,12 @@
         </button>
     </div>
 </header>
+
+<script>
+    const menuBtn = document.querySelector('.menuPhone');
+    const nav = document.querySelector('nav');
+
+    menuBtn.addEventListener('click', () => {
+        nav.classList.toggle('nav--open');
+    });
+</script>
