@@ -91,6 +91,293 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   SERVICIOS
+═══════════════════════════════════════════════════════════════ */
+.section-services {
+    background: var(--white);
+    padding: 80px 0;
+}
+
+.services-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.srv-card {
+    border-radius: var(--radius);
+    border: 1px solid #E0DDD8;
+    overflow: hidden;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+.srv-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+
+.srv-img .photo-placeholder { aspect-ratio: 16/9; }
+
+.srv-meta {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.srv-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.srv-desc {
+    font-size: 0.875rem;
+    color: var(--gray-mid);
+    line-height: 1.6;
+}
+
+.srv-duration {
+    font-size: 0.8rem;
+    color: var(--gray-mid);
+}
+
+.srv-price {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gold);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SOBRE NOSOTROS
+═══════════════════════════════════════════════════════════════ */
+.section-about {
+    background: var(--gray-light);
+    padding: 80px 0;
+}
+
+.about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.about-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--black);
+}
+.about-title em {
+    font-style: italic;
+    color: var(--gold);
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.about-text p {
+    font-size: 0.95rem;
+    color: var(--gray-mid);
+    line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+    .services-cards { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   EQUIPO — DRON
+═══════════════════════════════════════════════════════════════ */
+.section-gear {
+    background: var(--white);
+    padding: 80px 0;
+}
+
+.drone-card {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.drone-img .photo-placeholder { aspect-ratio: 4/3; border-radius: var(--radius); }
+
+.drone-name {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 12px;
+}
+
+.drone-desc {
+    font-size: 0.9rem;
+    color: var(--gray-mid);
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 16px 12px;
+    background: var(--gray-light);
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+.spec-icon svg { stroke: var(--gold); }
+
+.spec-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+}
+
+.spec-value {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   EQUIPO — FILTROS ND
+═══════════════════════════════════════════════════════════════ */
+.section-filters {
+    background: var(--dark);
+    padding: 80px 0;
+}
+
+.section-filters .section-label { color: var(--white); }
+.section-filters .section-label span { color: var(--gold-light); }
+
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.filter-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 32px 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-align: center;
+    transition: background var(--transition);
+}
+.filter-card:hover { background: rgba(255,255,255,0.08); }
+
+.filter-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 3px solid var(--border);
+}
+
+.nd4   { background: rgba(108,108,154,0.2); }
+.nd8   { background: rgba(108,108,154,0.35); }
+.nd16  { background: rgba(108,108,154,0.5); }
+.nd64  { background: rgba(108,108,154,0.65); }
+.nd256 { background: rgba(108,108,154,0.8); }
+.ndpl  { background: linear-gradient(135deg, rgba(108,108,154,0.6), rgba(74,74,122,0.9)); }
+
+.filter-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.filter-desc {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   EQUIPO — CALIDAD DE SALIDA
+═══════════════════════════════════════════════════════════════ */
+.section-quality {
+    background: var(--black);
+    padding: 80px 0;
+}
+
+.section-quality .section-label { color: var(--white); }
+.section-quality .section-label span { color: var(--gold-light); }
+
+.quality-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.quality-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 40px 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-align: center;
+    transition: border-color var(--transition);
+}
+.quality-card:hover { border-color: var(--gold); }
+
+.quality-value {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+}
+
+.quality-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.quality-sub {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+}
+
+@media (max-width: 900px) {
+    .drone-card { grid-template-columns: 1fr; gap: 32px; }
+    .specs-grid { grid-template-columns: repeat(2, 1fr); }
+    .filters-grid { grid-template-columns: repeat(2, 1fr); }
+    .quality-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+    .filters-grid { grid-template-columns: 1fr; }
+    .quality-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ═══════════════════════════════════════════════════════════════
    RESPONSIVE PAGES
 ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 900px) {

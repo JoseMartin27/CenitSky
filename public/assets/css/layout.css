@@ -31,9 +31,14 @@ header > div {
 }
 .logo span { color: var(--gold-light); }
 
-header > div > svg {
+header > div > a > svg {
     color: var(--gold-light);
     flex-shrink: 0;
+}
+
+header > div > a {
+    display: flex;
+    align-items: center;
 }
 
 nav {
