@@ -1,5 +1,4 @@
 <!-- Punto de entrada con los includes -->
-
 <?php include 'partials/head.php';?>
 <link rel="stylesheet" href="/MIS_PROYECTOS/CenitSky/public/assets/css/home.css">
 <?php include 'partials/header.php';?>

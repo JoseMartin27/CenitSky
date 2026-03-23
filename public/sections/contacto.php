@@ -1,4 +1,3 @@
-
 <section class="section-contact" id="contacto">
     <div class="container contact-inner">
         <div class="contact-left">
@@ -15,7 +14,8 @@
                 </div>
             </label>
         </div>
-        <form class="contact-form" action="/app/controllers/contacto_controller.php" method="POST">
+
+        <form class="contact-form" action="/MIS_PROYECTOS/CenitSky/app/controllers/contacto_controller.php" method="POST">
             <div class="form-row">
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -34,6 +34,17 @@
                 <label for="mensaje">Mensaje</label>
                 <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntame en qué puedo ayudarte..." required></textarea>
             </div>
+            <?php if (isset($_GET['contacto'])): ?>
+                <div class="form-alert <?php echo $_GET['contacto'] === 'ok' ? 'form-alert--ok' : 'form-alert--error'; ?>">
+                    <?php if ($_GET['contacto'] === 'ok'): ?>
+                        ✅ Mensaje enviado correctamente. Me pondré en contacto contigo pronto.
+                    <?php elseif ($_GET['contacto'] === 'error'): ?>
+                        ❌ Rellena todos los campos obligatorios.
+                    <?php elseif ($_GET['contacto'] === 'email'): ?>
+                        ❌ El email introducido no es válido.
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
             <button type="submit" class="btn btn--dark btn--full">Enviar mensaje</button>
         </form>
     </div>

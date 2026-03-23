@@ -11,8 +11,6 @@ try {
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
-   // echo "✅ Conexión exitosa"; // Si llega aquí, conectó bien
-
 } catch (PDOException $e){
     die("Error en la conexión: " .$e->getMessage());
 }
