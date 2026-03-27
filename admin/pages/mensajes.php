@@ -4,7 +4,7 @@ if (!isset($_SESSION['admin_logged'])) {
     header('Location: /MIS_PROYECTOS/CenitSky/admin/login.php');
     exit;
 }
-require_once 'E:/xampp/htdocs/MIS_PROYECTOS/CenitSky/app/config/database.php';
+require_once 'C:/xampp/htdocs/MIS_PROYECTOS/CenitSky/app/config/database.php';
 // Obtener todos los mensajes
 $stmt = $pdo->query('SELECT * FROM mensajes ORDER BY fecha DESC');
 $mensajes = $stmt->fetchAll();

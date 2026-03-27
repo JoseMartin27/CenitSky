@@ -3,7 +3,7 @@ Web dinámica de servicios de vídeo y fotografía con drones.
 
 ## Tecnologías
 - HTML / CSS / JavaScript
-- PHP (sin framework)
+- PHP
 - MySQL
 - XAMPP (servidor local)
 
@@ -13,16 +13,16 @@ Web dinámica de servicios de vídeo y fotografía con drones.
 
 ## Estructura del proyecto
 ```
-drone-services/
+CENITSKY
 │
 ├── public/
 │   ├── index.php
 │   ├── assets/
 │   │   ├── css/
 │   │   │   ├── base.css        ← variables, reset, botones, section-label
-│   │   │   ├── layout.css      ← header, nav, footer, responsive general
+│   │   │   ├── layout.css      ← header, nav, footer
 │   │   │   ├── home.css        ← hero, services-bar, vídeos, galería, contacto
-│   │   │   ├── pages.css       ← category-hero, noticias, servicios, equipo, acerca
+│   │   │   ├── pages.css       ← categoria-hero, noticias, servicios, equipo, acerca
 │   │   │   └── admin.css       ← panel de administración
 │   │   ├── js/
 │   │   ├── images/
@@ -37,7 +37,7 @@ drone-services/
 │   │   ├── equipo.php
 │   │   └── acerca.php
 │   ├── partials/
-│   │   ├── head.php            ← carga base.css y layout.css
+│   │   ├── head.php            ← base.css y layout.css
 │   │   ├── header.php
 │   │   └── footer.php
 │   ├── sections/
@@ -75,7 +75,7 @@ drone-services/
 │   ├── controllers/
 │   │   ├── login_controller.php
 │   │   ├── logout_controller.php
-│   │   └── contacto_controller.php  ← pendiente
+│   │   └── contacto_controller.php
 │   ├── models/
 │   ├── helpers/
 │   ├── config/
@@ -122,7 +122,7 @@ drone-services/
 
 ## Categorías de contenido
 | Categoría | Página | Uploads |
-|-----------|--------|---------|
+---------------------------------
 | Paisajes | `pages/paisajes.php` | `uploads/paisajes/` |
 | Aventura | `pages/aventura.php` | `uploads/aventura/` |
 | Estructuras | `pages/estructuras.php` | `uploads/estructuras/` |
@@ -140,38 +140,112 @@ Gestiona desde `admin/`:
 - Noticias
 - Configuración general
 
-## Base de datos
-Nombre: `cenitsky`
-Ver `docs/base-de-datos.md`
+## Base de datos SQL Y Schema
+-- CENITSKY — Base de datos:
 
-### Tablas
-| Tabla | Descripción |
-|-------|-------------|
-| `usuarios` | Acceso al panel admin |
-| `categorias` | Categorías de contenido |
-| `media` | Fotos y vídeos por categoría |
-| `noticias` | Artículos del blog |
-| `mensajes` | Contactos del formulario |
-| `configuracion` | Ajustes generales de la web |
-| `estadisticas` | Registro de visitas |
+CREATE DATABASE IF NOT EXISTS cenitsky CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE cenitsky;
+
+-- USUARIOS
+
+CREATE TABLE usuarios (
+    usuario_id    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre        VARCHAR(100) NOT NULL,
+    email         VARCHAR(150) NOT NULL UNIQUE,
+    password      VARCHAR(255) NOT NULL,
+    rol           ENUM('admin','superadmin') NOT NULL DEFAULT 'admin',
+    fecha         DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- CATEGORIAS
+
+CREATE TABLE categorias (
+    categoria_id  INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre        VARCHAR(100) NOT NULL,
+    slug          VARCHAR(100) NOT NULL UNIQUE,
+    activa        TINYINT(1) NOT NULL DEFAULT 1
+);
+
+-- Datos iniciales
+INSERT INTO categorias (nombre, slug, activa) VALUES
+('Paisajes',    'paisajes',    1),
+('Aventura',    'aventura',    1),
+('Estructuras', 'estructuras', 1);
+
+-- MEDIA
+
+CREATE TABLE media (
+    media_id      INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    categoria_id  INT UNSIGNED NOT NULL,
+    tipo          ENUM('foto','video') NOT NULL,
+    archivo       VARCHAR(255) NOT NULL,
+    titulo        VARCHAR(150),
+    descripcion   TEXT,
+    destacada     TINYINT(1) NOT NULL DEFAULT 0,
+    orden         INT UNSIGNED NOT NULL DEFAULT 0,
+    fecha         DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (categoria_id) REFERENCES categorias(categoria_id) ON DELETE CASCADE
+);
+
+-- NOTICIAS
+
+CREATE TABLE noticias (
+    noticia_id    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    titulo        VARCHAR(200) NOT NULL,
+    slug          VARCHAR(200) NOT NULL UNIQUE,
+    resumen       VARCHAR(300),
+    contenido     TEXT NOT NULL,
+    imagen        VARCHAR(255),
+    publicada     TINYINT(1) NOT NULL DEFAULT 0,
+    fecha         DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- MENSAJES
+
+CREATE TABLE mensajes (
+    mensaje_id    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre        VARCHAR(100) NOT NULL,
+    email         VARCHAR(150) NOT NULL,
+    direccion     VARCHAR(200),
+    mensaje       TEXT NOT NULL,
+    leido         TINYINT(1) NOT NULL DEFAULT 0,
+    fecha         DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CONFIGURACION
+
+CREATE TABLE configuracion (
+    configuracion_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    clave            VARCHAR(100) NOT NULL UNIQUE,
+    valor            TEXT
+);
+
+-- Datos iniciales
+INSERT INTO configuracion (clave, valor) VALUES
+('nombre_sitio',    'Cenit-Sky'),
+('email_contacto',  'hola@cenitsky.com'),
+('telefono',        ''),
+('instagram',       ''),
+('youtube',         ''),
+('texto_footer',    '© 2026 Cenit-Sky — Todos los derechos reservados');
+
+-- ESTADISTICAS
+
+CREATE TABLE estadisticas (
+    estadistica_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    pagina         VARCHAR(200) NOT NULL,
+    categoria_id   INT UNSIGNED,
+    ip             VARCHAR(45),
+    fecha          DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (categoria_id) REFERENCES categorias(categoria_id) ON DELETE SET NULL
+);
 
 ## Equipo técnico
 - **Dron:** DJI Mini 4 Pro
 - **Filtros:** ND4, ND8, ND16, ND64, ND256, ND-PL
 - **Vídeo:** 4K / 100fps
 - **Foto:** 48MP RAW + JPEG
-
-## Estado actual
-- ✅ Portada completa
-- ✅ Páginas de categoría: paisajes, aventura, estructuras, noticias
-- ✅ Páginas nuevas: servicios, equipo, acerca
-- ✅ Panel admin: login, dashboard, logout
-- ✅ Base de datos conectada
-- ⏳ Formulario de contacto pendiente de conectar
-- ⏳ Páginas admin: mensajes, galería, noticias, configuración
-
-## Instalación en XAMPP
-Ver `docs/instalacion.md`
 
 ## Autor
 JoseMartin

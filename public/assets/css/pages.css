@@ -1,6 +1,4 @@
-/* ═══════════════════════════════════════════════════════════════
-   HERO DE CATEGORÍA
-═══════════════════════════════════════════════════════════════ */
+/* HERO DE CATEGORÍA */
 .category-hero {
     background: var(--dark);
     padding: 120px 0 60px;
@@ -22,9 +20,7 @@
     line-height: 1.7;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   NOTICIAS
-═══════════════════════════════════════════════════════════════ */
+/* NOTICIAS */
 .section-news {
     background: var(--white);
     padding: 80px 0;
@@ -90,9 +86,8 @@
     border-color: var(--gold);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   SERVICIOS
-═══════════════════════════════════════════════════════════════ */
+/* SERVICIOS */
+
 .section-services {
     background: var(--white);
     padding: 80px 0;
@@ -148,9 +143,8 @@
     color: var(--gold);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   SOBRE NOSOTROS
-═══════════════════════════════════════════════════════════════ */
+/* SOBRE NOSOTROS */
+
 .section-about {
     background: var(--gray-light);
     padding: 80px 0;
@@ -192,9 +186,7 @@
     .about-inner { grid-template-columns: 1fr; gap: 32px; }
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   EQUIPO — DRON
-═══════════════════════════════════════════════════════════════ */
+/* EQUIPO — DRON */
 .section-gear {
     background: var(--white);
     padding: 80px 0;
@@ -258,9 +250,7 @@
     color: var(--black);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   EQUIPO — FILTROS ND
-═══════════════════════════════════════════════════════════════ */
+/* EQUIPO — FILTROS ND */
 .section-filters {
     background: var(--dark);
     padding: 80px 0;
@@ -316,9 +306,8 @@
     line-height: 1.6;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   EQUIPO — CALIDAD DE SALIDA
-═══════════════════════════════════════════════════════════════ */
+/* EQUIPO — CALIDAD DE SALIDA */
+
 .section-quality {
     background: var(--black);
     padding: 80px 0;
@@ -377,9 +366,8 @@
     .quality-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   RESPONSIVE PAGES
-═══════════════════════════════════════════════════════════════ */
+/* RESPONSIVE PAGES */
+
 @media (max-width: 900px) {
     .news-grid { grid-template-columns: repeat(2, 1fr); }
 }

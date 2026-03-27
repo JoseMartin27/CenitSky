@@ -1,5 +1,5 @@
 <?php
-require_once 'E:/xampp/htdocs/MIS_PROYECTOS/CenitSky/app/config/database.php';
+require_once 'C:/xampp/htdocs/MIS_PROYECTOS/CenitSky/app/config/database.php';
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre    = trim($_POST['nombre'] ?? '');
     $email     = trim($_POST['email'] ?? '');

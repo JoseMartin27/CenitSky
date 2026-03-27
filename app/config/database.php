@@ -1,6 +1,6 @@
 <?php
-//Credenciales
-$host = '127.0.0.1'; //ruta de la base de datos
+//Credenciales y conexion bd 
+$host = '127.0.0.1'; //Ruta de la base de datos
 $dbname = 'cenitsky'; //Nombre de la base de datos
 $username = 'usuario_jose'; //Usuario 
 $password = 'Shelbygt500@'; //Password

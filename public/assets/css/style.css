@@ -1,7 +1,7 @@
-/* ═══════════════════════════════════════════════════════════════
-   VARIABLES & RESET
-═══════════════════════════════════════════════════════════════ */
+/* VARIABLES & RESET */
+
 :root {
+    /*Cambio de nombre de variables por cambio de estilo*/
     --gold:        #6C6C9A;
     --gold-light:  #9090BB;
     --gold-dark:   #4A4A7A;
@@ -42,9 +42,7 @@
     padding: 0 24px;
   }
   
-  /* ═══════════════════════════════════════════════════════════════
-     HEADER / NAV
-  ═══════════════════════════════════════════════════════════════ */
+  /* HEADER / NAV */
   header {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -127,9 +125,8 @@
     transition: var(--transition);
   }
   
-  /* ═══════════════════════════════════════════════════════════════
-     BOTONES
-  ═══════════════════════════════════════════════════════════════ */
+  /* BOTONES */
+
   .btn {
     display: inline-flex;
     align-items: center;
@@ -166,9 +163,7 @@
   
   .btn--full { width: 100%; justify-content: center; }
   
-  /* ═══════════════════════════════════════════════════════════════
-     HERO
-  ═══════════════════════════════════════════════════════════════ */
+  /* HERO */
   .hero {
     position: relative;
     padding-top: 64px;
@@ -290,9 +285,8 @@
     text-align: center;
   }
   
-  /* ═══════════════════════════════════════════════════════════════
-     ETIQUETA DE SECCIÓN
-  ═══════════════════════════════════════════════════════════════ */
+  /* ETIQUETA DE SECCIÓN */
+
   .section-label {
     font-family: var(--font-body);
     font-size: 1.8rem;
@@ -305,9 +299,8 @@
   .section-label.light { color: var(--white); }
   .section-label.light span { color: var(--gold-light); }
   
-  /* ═══════════════════════════════════════════════════════════════
-     VÍDEO & SHORTS
-  ═══════════════════════════════════════════════════════════════ */
+  /* VÍDEO & SHORTS */
+
   .section-videos {
     background: var(--black);
     padding: 80px 0 70px;
@@ -384,9 +377,8 @@
     color: var(--gray-mid);
   }
   
-  /* ═══════════════════════════════════════════════════════════════
-     GALERÍA DE FOTOS
-  ═══════════════════════════════════════════════════════════════ */
+  /* GALERÍA DE FOTOS */
+
   .section-gallery {
     background: var(--gray-light);
     padding: 80px 0 60px;
@@ -431,9 +423,8 @@
   
   .photo-card:hover .photo-placeholder { transform: scale(1.02); }
   
-  /* ═══════════════════════════════════════════════════════════════
-     CONTACTO
-  ═══════════════════════════════════════════════════════════════ */
+  /* CONTACTO */
+  
   .section-contact {
     background: var(--white);
     padding: 80px 0;
@@ -532,9 +523,8 @@
   .form-group input:focus,
   .form-group textarea:focus { border-color: var(--gold); }
   
-  /* ═══════════════════════════════════════════════════════════════
-     FOOTER
-  ═══════════════════════════════════════════════════════════════ */
+  /* FOOTER  pendiente añadir elementos redes sociales y tlf y correo contacto*/
+
   .site-footer {
     background: var(--dark);
     padding: 24px 0;
@@ -560,9 +550,7 @@
   }
   .footer-links a:hover { color: var(--gold-light); }
   
-  /* ═══════════════════════════════════════════════════════════════
-     RESPONSIVE
-  ═══════════════════════════════════════════════════════════════ */
+  /* RESPONSIVE */
   @media (max-width: 900px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .video-grid { grid-template-columns: 1fr 1fr; }

@@ -1,6 +1,4 @@
-/* ═══════════════════════════════════════════════════════════════
-   HEADER / NAV
-═══════════════════════════════════════════════════════════════ */
+/* HEADER / NAV */
 header {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -92,9 +90,8 @@ nav a:last-child:hover {
     transition: var(--transition);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════════════════════════ */
+/* FOOTER */
+
 .site-footer {
     background: var(--dark);
     padding: 24px 0;
@@ -120,9 +117,7 @@ nav a:last-child:hover {
 }
 .footer-links a:hover { color: var(--gold-light); }
 
-/* ═══════════════════════════════════════════════════════════════
-   RESPONSIVE LAYOUT
-═══════════════════════════════════════════════════════════════ */
+/* RESPONSIVE LAYOUT  */
 @media (max-width: 640px) {
     nav { display: none; }
     .menuPhone { display: flex; }

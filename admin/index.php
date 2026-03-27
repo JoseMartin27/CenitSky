@@ -5,7 +5,7 @@ if (!isset($_SESSION['admin_logged'])) {
     exit;
 }
 
-require_once 'E:/xampp/htdocs/MIS_PROYECTOS/CenitSky/app/config/database.php';
+require_once 'C:/xampp/htdocs/MIS_PROYECTOS/CenitSky/app/config/database.php';
 
 // Estadísticas
 $total_mensajes = $pdo->query('SELECT COUNT(*) FROM mensajes')->fetchColumn();

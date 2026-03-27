@@ -1,6 +1,4 @@
-// ═══════════════════════════════════════════════════════════════
-//  MODAL MENSAJES
-// ═══════════════════════════════════════════════════════════════
+// MODAL MENSAJES
 const rows = document.querySelectorAll('.mensaje-row');
 const overlay = document.getElementById('modalOverlay');
 const modalClose = document.getElementById('modalClose');

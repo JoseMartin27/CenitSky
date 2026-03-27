@@ -4,7 +4,7 @@ if (!isset($_SESSION['admin_logged'])) {
     header('Location: /MIS_PROYECTOS/CenitSky/admin/login.php');
     exit;
 }
-require_once 'E:/xampp/htdocs/MIS_PROYECTOS/CenitSky/app/config/database.php';
+require_once 'C:/xampp/htdocs/MIS_PROYECTOS/CenitSky/app/config/database.php';
 
 $accion = $_GET['accion'] ?? '';
 $id     = (int)($_GET['id'] ?? 0);

@@ -37,11 +37,11 @@
             <?php if (isset($_GET['contacto'])): ?>
                 <div class="form-alert <?php echo $_GET['contacto'] === 'ok' ? 'form-alert--ok' : 'form-alert--error'; ?>">
                     <?php if ($_GET['contacto'] === 'ok'): ?>
-                        ✅ Mensaje enviado correctamente. Me pondré en contacto contigo pronto.
+                        Mensaje enviado correctamente. Me pondré en contacto contigo pronto.
                     <?php elseif ($_GET['contacto'] === 'error'): ?>
-                        ❌ Rellena todos los campos obligatorios.
+                        Rellena todos los campos obligatorios.
                     <?php elseif ($_GET['contacto'] === 'email'): ?>
-                        ❌ El email introducido no es válido.
+                        El email introducido no es válido.
                     <?php endif; ?>
                 </div>
             <?php endif; ?>

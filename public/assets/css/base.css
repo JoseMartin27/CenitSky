@@ -1,7 +1,8 @@
-/* ═══════════════════════════════════════════════════════════════
+/* 
    VARIABLES & RESET
-═══════════════════════════════════════════════════════════════ */
+ */
 :root {
+    /*Pendiente reasignar nombre de variables por cambio de estilo*/
     --gold:        #6C6C9A;
     --gold-light:  #9090BB;
     --gold-dark:   #4A4A7A;
@@ -43,9 +44,9 @@ img, video { display: block; max-width: 100%; }
     padding: 0 24px;
 }
 
-/* ═══════════════════════════════════════════════════════════════
+/*
    BOTONES
-═══════════════════════════════════════════════════════════════ */
+ */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -80,9 +81,9 @@ img, video { display: block; max-width: 100%; }
 
 .btn--full { width: 100%; justify-content: center; }
 
-/* ═══════════════════════════════════════════════════════════════
+/* 
    ETIQUETA DE SECCIÓN
-═══════════════════════════════════════════════════════════════ */
+ */
 .section-label {
     font-family: var(--font-body);
     font-size: 1.8rem;
