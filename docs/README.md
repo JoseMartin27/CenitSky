@@ -247,5 +247,8 @@ CREATE TABLE estadisticas (
 - **Vídeo:** 4K / 100fps
 - **Foto:** 48MP RAW + JPEG
 
+## Datos
+1 
+
 ## Autor
 JoseMartin
