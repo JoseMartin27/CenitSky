@@ -110,7 +110,12 @@ nav a:last-child:hover {
 }
 
 .footer-links { display: flex; gap: 24px; }
+
+
 .footer-links a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     font-size: 0.78rem;
     color: rgba(255,255,255,0.4);
     transition: color var(--transition);

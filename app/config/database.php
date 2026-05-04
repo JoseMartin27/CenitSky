@@ -1,8 +1,8 @@
 <?php
 //Credenciales y conexion bd 
-$host = '127.0.0.1'; //Ruta de la base de datos
+$host = 'localhost'; //Ruta de la base de datos
 $dbname = 'cenitsky'; //Nombre de la base de datos
-$username = 'usuario_jose'; //Usuario 
+$username = 'root'; //Usuario 
 $password = 'Shelbygt500@'; //Password
 
 try {

@@ -3,8 +3,29 @@
 <link rel="stylesheet" href="/MIS_PROYECTOS/CenitSky/public/assets/css/pages.css">
 <?php include '../partials/header.php'; ?>
 
-<main>
+<?php
+$stmt = $pdo->prepare('
+    SELECT m.* FROM media m
+    JOIN categorias c ON m.categoria_id = c.categoria_id
+    WHERE c.slug = ? AND m.tipo = "video"
+    ORDER BY m.orden ASC, m.fecha DESC
+    LIMIT 3
+');
+$stmt->execute(['estructuras']);
+$videos = $stmt->fetchAll();
 
+$stmt = $pdo->prepare('
+    SELECT m.* FROM media m
+    JOIN categorias c ON m.categoria_id = c.categoria_id
+    WHERE c.slug = ? AND m.tipo = "foto"
+    ORDER BY m.orden ASC, m.fecha DESC
+    LIMIT 6
+');
+$stmt->execute(['estructuras']);
+$fotos = $stmt->fetchAll();
+?>
+
+<main>
     <section class="category-hero">
         <div class="container">
             <h1 class="category-title">Estructuras</h1>
@@ -18,59 +39,47 @@
     <section class="section-videos">
         <div class="container">
             <h2 class="section-label">Vídeos</h2>
-            <div class="video-grid">
-
-                <div class="video-card video-card--short">
-                    <div class="video-thumb">
-                        <video src="/public/assets/video/estructuras_short1.mp4" autoplay loop muted playsinline></video>
-                        <span class="video-label">Sh<span class="dot">●</span>t 1</span>
-                    </div>
-                    <div class="video-meta">
-                        <p class="video-title">Inspección de cubierta</p>
-                        <p class="video-stats">0:55 · Estructuras</p>
-                    </div>
+            <?php if(empty($videos)): ?>
+                <p style="color: var(--gray-mid); text-align:center; padding: 40px 0;">No hay vídeos todavía.</p>
+            <?php else: ?>
+                <div class="video-grid">
+                    <?php foreach($videos as $i => $v): ?>
+                        <div class="video-card <?php echo $i === 1 ? 'video-card--main' : 'video-card--short'; ?>">
+                            <div class="video-thumb">
+                                <video src="<?php echo htmlspecialchars($v['archivo']); ?>" autoplay loop muted playsinline></video>
+                                <span class="video-label"><?php echo htmlspecialchars($v['titulo'] ?? ''); ?></span>
+                            </div>
+                            <div class="video-meta">
+                                <p class="video-title"><?php echo htmlspecialchars($v['titulo'] ?? ''); ?></p>
+                                <p class="video-stats"><?php echo htmlspecialchars($v['descripcion'] ?? ''); ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
-
-                <div class="video-card video-card--main">
-                    <div class="video-thumb">
-                        <video src="/public/assets/video/estructuras_main.mp4" autoplay loop muted playsinline></video>
-                        <span class="video-label">Vídeo <span class="dot">●</span>incipal</span>
-                    </div>
-                    <div class="video-meta">
-                        <p class="video-title">Seguimiento de obra</p>
-                        <p class="video-stats">3:55 · Estructuras</p>
-                    </div>
-                </div>
-
-                <div class="video-card video-card--short">
-                    <div class="video-thumb">
-                        <video src="/public/assets/video/estructuras_short2.mp4" autoplay loop muted playsinline></video>
-                        <span class="video-label">Sh<span class="dot">●</span>t 2</span>
-                    </div>
-                    <div class="video-meta">
-                        <p class="video-title">Castillo medieval</p>
-                        <p class="video-stats">1:20 · Estructuras</p>
-                    </div>
-                </div>
-
-            </div>
+            <?php endif; ?>
         </div>
     </section>
 
     <section class="section-gallery">
         <div class="container">
             <h2 class="section-label">Fotos</h2>
-            <div class="photo-grid">
-                <div class="photo-card"><div class="photo-placeholder"><span>Estructura 1</span></div></div>
-                <div class="photo-card"><div class="photo-placeholder"><span>Estructura 2</span></div></div>
-                <div class="photo-card"><div class="photo-placeholder"><span>Estructura 3</span></div></div>
-                <div class="photo-card"><div class="photo-placeholder"><span>Estructura 4</span></div></div>
-                <div class="photo-card"><div class="photo-placeholder"><span>Estructura 5</span></div></div>
-                <div class="photo-card"><div class="photo-placeholder"><span>Estructura 6</span></div></div>
-            </div>
+            <?php if(empty($fotos)): ?>
+                <p style="color: var(--gray-mid); text-align:center; padding: 40px 0;">No hay fotos todavía.</p>
+            <?php else: ?>
+                <div class="photo-grid">
+                    <?php foreach($fotos as $foto): ?>
+                        <div class="photo-card">
+                            <div class="photo-placeholder">
+                                <img src="<?php echo htmlspecialchars($foto['archivo']); ?>"
+                                     alt="<?php echo htmlspecialchars($foto['titulo'] ?? ''); ?>"
+                                     style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;">
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </section>
-
 </main>
 
 <?php include '../partials/footer.php'; ?>

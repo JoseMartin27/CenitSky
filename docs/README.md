@@ -249,6 +249,3 @@ CREATE TABLE estadisticas (
 
 ## Autor
 JoseMartin
-
-## API 
-Pendiente la revision del api y subida de archivos.
