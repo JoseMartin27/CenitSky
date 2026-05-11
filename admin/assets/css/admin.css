@@ -797,6 +797,42 @@ body {
     text-align: center;
     width: 100%;
 }
+/* Ajustes específicos para el Formulario dentro del Modal */
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.btn-modal-save {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #6C6C9A, #4A4A7A);
+    border: none;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.25s ease;
+}
+
+.btn-modal-cancel {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(108, 108, 154, 0.3);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-modal-save:hover, .btn-modal-cancel:hover {
+    opacity: 0.8;
+}
 
 @media (max-width: 1200px) {
     .galeria-grid { grid-template-columns: repeat(3, 1fr); }

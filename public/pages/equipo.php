@@ -22,7 +22,7 @@
             <h2 class="section-label">El <span>Dron</span></h2>
             <div class="drone-card">
                 <div class="drone-img">
-                    <div class="photo-placeholder"><span>DJI Mini 4 Pro</span></div>
+                <img src="/MIS_PROYECTOS/CenitSky/public/assets/images/mini_4_pro.jpg" alt="DJI Mini 4 Pro">
                 </div>
                 <div class="drone-specs">
                     <h3 class="drone-name">DJI Mini 4 Pro</h3>

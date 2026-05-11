@@ -23,7 +23,7 @@
 
                 <div class="srv-card">
                     <div class="srv-img">
-                        <div class="photo-placeholder"><span>Fotografía aérea</span></div>
+                    <img src="/MIS_PROYECTOS/CenitSky/public/assets/images/foto_aerea.jpg" alt="Fotografía aerea">
                     </div>
                     <div class="srv-meta">
                         <h3 class="srv-title">Fotografía Aérea</h3>
@@ -36,7 +36,7 @@
 
                 <div class="srv-card">
                     <div class="srv-img">
-                        <div class="photo-placeholder"><span>Vídeo cinematográfico</span></div>
+                    <img src="/MIS_PROYECTOS/CenitSky/public/assets/images/cine_dron.jpg" alt="Fotografía cinematográfica">
                     </div>
                     <div class="srv-meta">
                         <h3 class="srv-title">Vídeo Cinematográfico</h3>
@@ -49,7 +49,7 @@
 
                 <div class="srv-card">
                     <div class="srv-img">
-                        <div class="photo-placeholder"><span>Revisión de estructuras</span></div>
+                        <img src="/MIS_PROYECTOS/CenitSky/public/assets/images/estructura_dron.jpg" alt="Revisión de estructuras">
                     </div>
                     <div class="srv-meta">
                         <h3 class="srv-title">Revisión de Estructuras</h3>
@@ -62,7 +62,7 @@
 
                 <div class="srv-card">
                     <div class="srv-img">
-                        <div class="photo-placeholder"><span>Eventos deportivos</span></div>
+                        <img src="/MIS_PROYECTOS/CenitSky/public/assets/images/deporte.png" alt="Eventos deportivos">
                     </div>
                     <div class="srv-meta">
                         <h3 class="srv-title">Eventos Deportivos</h3>

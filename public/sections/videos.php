@@ -1,4 +1,3 @@
-
 <?php
 require_once dirname(__DIR__, 2) . '/app/config/database.php';
 $stmt = $pdo->query('SELECT * FROM media WHERE destacada = 1 AND tipo = "video" ORDER BY orden ASC LIMIT 3');
@@ -8,51 +7,143 @@ $videos = $stmt->fetchAll();
 <section class="section-videos" id="videos">
     <div class="container">
         <h2 class="section-label light">Vídeo <span>&</span> Shorts</h2>
-        <?php if(empty($videos)): ?>
-            <p style="color: var(--gray-mid); text-align:center; padding: 40px 0;">No hay vídeos destacados todavía.</p>
+
+        <?php if (empty($videos)): ?>
+            <p style="color: var(--gray-mid); text-align:center; padding: 40px 0;">
+                No hay vídeos destacados todavía.
+            </p>
         <?php else: ?>
+
             <div class="video-grid">
-                <?php foreach($videos as $i => $v): ?>
+                <?php foreach ($videos as $i => $v): ?>
                     <div class="video-card <?php echo $i === 1 ? 'video-card--main' : 'video-card--short'; ?>">
+
                         <div class="video-thumb">
-                            <video src="<?php echo htmlspecialchars($v['archivo']); ?>" autoplay loop muted playsinline></video>
-                            <span class="video-label"><?php echo htmlspecialchars($v['titulo'] ?? ''); ?></span>
+                            <video class="video-item"
+                                   src="<?php echo htmlspecialchars($v['archivo']); ?>"
+                                   loop></video>
+
+                            <button class="play-btn">▶</button>
+
+                            <span class="video-label">
+                                <?php echo htmlspecialchars($v['titulo'] ?? ''); ?>
+                            </span>
                         </div>
+
                         <div class="video-meta">
                             <p class="video-title"><?php echo htmlspecialchars($v['titulo'] ?? ''); ?></p>
                             <p class="video-stats"><?php echo htmlspecialchars($v['descripcion'] ?? ''); ?></p>
                         </div>
+
                     </div>
                 <?php endforeach; ?>
             </div>
+
         <?php endif; ?>
     </div>
 </section>
 
+<!-- ================= MODAL ================= -->
+<div id="videoModal" class="video-modal">
+    <div class="video-modal-content">
+        <span class="close-modal">&times;</span>
+        <video id="modalVideo" controls autoplay></video>
+    </div>
+</div>
+
+<!-- ================= CSS ================= -->
+<style>
+.video-thumb{
+    position:relative;
+}
+
+.play-btn{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(0,0,0,0.6);
+    color:white;
+    border:none;
+    border-radius:50%;
+    width:50px;
+    height:50px;
+    font-size:20px;
+    cursor:pointer;
+    z-index:2;
+}
+
+/* ===== MODAL ===== */
+.video-modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.video-modal-content{
+    position:relative;
+    width:80%;
+    max-width:900px;
+}
+
+.video-modal-content video{
+    width:100%;
+    border-radius:12px;
+}
+
+.close-modal{
+    position:absolute;
+    top:-40px;
+    right:0;
+    font-size:30px;
+    color:white;
+    cursor:pointer;
+}
+</style>
+
+<!-- ================= JS ================= -->
 <script>
-const grid = document.querySelector('.video-grid');
-const cards = () => [...grid.querySelectorAll('.video-card')];
+// ================= PLAY BUTTONS =================
+document.querySelectorAll(".video-thumb").forEach(container => {
+    const video = container.querySelector("video");
+    const btn = container.querySelector(".play-btn");
 
-grid.querySelectorAll('.video-card--short').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        const all = cards();
-        const idx = all.indexOf(card);
+    const openModal = () => {
+        const modal = document.getElementById("videoModal");
+        const modalVideo = document.getElementById("modalVideo");
 
-        grid.style.transition = 'all 0.5s ease';
+        modal.style.display = "flex";
+        modalVideo.src = video.src;
+        modalVideo.play();
+    };
 
-        if (idx === 0) {
-            // hover izquierda → la izquierda pasa al centro
-            grid.insertBefore(all[1], all[0]);
-        } else if (idx === 2) {
-            // hover derecha → la derecha pasa al centro
-            grid.insertBefore(all[2], all[1]);
-        }
+    btn.addEventListener("click", openModal);
+    video.addEventListener("click", openModal);
+});
 
-        // actualiza clases
-        cards().forEach((c, i) => {
-            c.classList.remove('video-card--short', 'video-card--main');
-            c.classList.add(i === 1 ? 'video-card--main' : 'video-card--short');
-        });
-    });
+// ================= MODAL CONTROL =================
+const modal = document.getElementById("videoModal");
+const modalVideo = document.getElementById("modalVideo");
+const closeBtn = document.querySelector(".close-modal");
+
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    modalVideo.pause();
+    modalVideo.src = "";
+});
+
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+        modalVideo.pause();
+        modalVideo.src = "";
+    }
 });
 </script>

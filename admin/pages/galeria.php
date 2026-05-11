@@ -1,3 +1,5 @@
+
+
 <?php
 session_start();
 if(!isset($_SESSION['admin_logged'])) {
@@ -6,18 +8,15 @@ if(!isset($_SESSION['admin_logged'])) {
 }
 require_once 'C:/xampp/htdocs/MIS_PROYECTOS/CenitSky/app/config/database.php';
 
-// Obtener categorías
 $categorias = $pdo->query('SELECT * FROM categorias WHERE activa = 1')->fetchAll();
 
-// Obtener media agrupada por categoría
 $media = $pdo->query('
-    SELECT m.*, c.nombre as cat_nombre, c.slug as cat_slug 
-    FROM media m 
-    JOIN categorias c ON m.categoria_id = c.categoria_id 
+    SELECT m.*, c.nombre as cat_nombre, c.slug as cat_slug
+    FROM media m
+    JOIN categorias c ON m.categoria_id = c.categoria_id
     ORDER BY m.categoria_id, m.orden ASC, m.fecha DESC
 ')->fetchAll();
 
-// Agrupar por categoría
 $media_por_categoria = [];
 foreach($media as $item) {
     $media_por_categoria[$item['cat_slug']][] = $item;
@@ -79,6 +78,29 @@ foreach($media as $item) {
                 <a href="/MIS_PROYECTOS/CenitSky/app/controllers/logout_controller.php" class="btn-logout">Cerrar sesión</a>
             </div>
         </div>
+
+        <!-- Mensajes de estado -->
+        <?php if(isset($_GET['ok'])): ?>
+            <div class="admin-alert admin-alert--ok">
+                <?php
+                echo $_GET['ok'] === 'editado'
+                    ? 'Datos actualizados correctamente'
+                    : 'Archivo subido correctamente';
+                ?>
+            </div>
+        <?php endif; ?>
+        <?php if(isset($_GET['error'])): ?>
+            <div class="admin-alert admin-alert--error">
+                <?php
+                $errores = [
+                    'archivo'  => 'Error al recibir el archivo',
+                    'formato'  => 'Formato de archivo no permitido',
+                    'subida'   => 'Error al guardar el archivo en el servidor',
+                ];
+                echo $errores[$_GET['error']] ?? 'Error desconocido';
+                ?>
+            </div>
+        <?php endif; ?>
 
         <!-- Formulario de subida -->
         <div class="admin-section">
@@ -155,6 +177,11 @@ foreach($media as $item) {
                                     <div class="galeria-overlay">
                                         <span class="galeria-titulo"><?php echo htmlspecialchars($item['titulo'] ?? 'Sin título'); ?></span>
                                         <div class="galeria-acciones">
+                                            <button
+                                                class="btn-accion"
+                                                onclick="abrirModal(<?php echo $item['media_id']; ?>, '<?php echo addslashes(htmlspecialchars($item['titulo'] ?? '')); ?>', '<?php echo addslashes(htmlspecialchars($item['descripcion'] ?? '')); ?>')">
+                                                Editar
+                                            </button>
                                             <a href="/MIS_PROYECTOS/CenitSky/app/controllers/galeria_controller.php?accion=destacar&id=<?php echo $item['media_id']; ?>" class="btn-accion">
                                                 <?php echo $item['destacada'] ? 'Quitar destacada' : 'Destacar'; ?>
                                             </a>
@@ -176,10 +203,62 @@ foreach($media as $item) {
     </main>
 </div>
 
+<!-- ── Modal editar ── -->
+<div id="modalEditar" class="modal-overlay"> <!-- Quitamos el style="display:none" manual -->
+    <div class="modal-box">
+        <div class="modal-header">
+            <div class="modal-info">
+                <h3 class="modal-nombre">Editar archivo</h3>
+                <p class="modal-email">Edita los detalles de publicaciones.</p>
+            </div>
+            <button type="button" class="modal-close" onclick="cerrarModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+
+        <form method="POST" action="/MIS_PROYECTOS/CenitSky/app/controllers/galeria_controller.php?accion=editar" class="login-form" style="margin:0; gap:20px;">
+            <input type="hidden" id="modal_media_id" name="media_id">
+            
+            <div class="upload-group">
+                <label>Título</label>
+                <input type="text" id="modal_titulo" name="titulo" placeholder="Ej. Atardecer en la costa">
+            </div>
+
+            <div class="upload-group">
+                <label>Descripción</label>
+                <textarea id="modal_descripcion" name="descripcion" rows="4" placeholder="Escribe una breve descripción..."></textarea>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-modal-cancel" onclick="cerrarModal()">Cancelar</button>
+                <button type="submit" class="btn-modal-save">Guardar cambios</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <script>
 document.getElementById('archivo').addEventListener('change', function() {
     const name = this.files[0]?.name || 'Seleccionar archivo';
     document.getElementById('uploadFileName').textContent = name;
+});
+
+function abrirModal(id, titulo, descripcion) {
+    document.getElementById('modal_media_id').value = id;
+    document.getElementById('modal_titulo').value = titulo;
+    document.getElementById('modal_descripcion').value = descripcion;
+    
+    // Añadimos la clase que definiste en tu CSS para mostrarlo
+    document.getElementById('modalEditar').classList.add('modal--open');
+}
+
+function cerrarModal() {
+    document.getElementById('modalEditar').classList.remove('modal--open');
+}
+
+// Cerrar al hacer clic fuera del recuadro
+document.getElementById('modalEditar').addEventListener('click', function(e) {
+    if(e.target === this) cerrarModal();
 });
 </script>
 
