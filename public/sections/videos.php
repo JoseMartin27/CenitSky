@@ -1,7 +1,7 @@
 <?php
-require_once dirname(__DIR__, 2) . '/app/config/database.php';
-$stmt = $pdo->query('SELECT * FROM media WHERE destacada = 1 AND tipo = "video" ORDER BY orden ASC LIMIT 3');
-$videos = $stmt->fetchAll();
+    require_once dirname(__DIR__, 2) . '/app/config/database.php';
+    $stmt = $pdo->query('SELECT * FROM media WHERE destacada = 1 AND tipo = "video" ORDER BY orden ASC LIMIT 3');
+    $videos = $stmt->fetchAll();
 ?>
 
 <section class="section-videos" id="videos">
@@ -43,7 +43,7 @@ $videos = $stmt->fetchAll();
     </div>
 </section>
 
-<!-- ================= MODAL ================= -->
+<!-- Modal de video -->
 <div id="videoModal" class="video-modal">
     <div class="video-modal-content">
         <span class="close-modal">&times;</span>
@@ -51,7 +51,7 @@ $videos = $stmt->fetchAll();
     </div>
 </div>
 
-<!-- ================= CSS ================= -->
+<!-- Estilos de los videos principales -->
 <style>
 .video-thumb{
     position:relative;
@@ -73,7 +73,7 @@ $videos = $stmt->fetchAll();
     z-index:2;
 }
 
-/* ===== MODAL ===== */
+/* Modal*/
 .video-modal{
     display:none;
     position:fixed;
@@ -108,42 +108,40 @@ $videos = $stmt->fetchAll();
 }
 </style>
 
-<!-- ================= JS ================= -->
+<!-- Botones de play -->
 <script>
-// ================= PLAY BUTTONS =================
-document.querySelectorAll(".video-thumb").forEach(container => {
-    const video = container.querySelector("video");
-    const btn = container.querySelector(".play-btn");
+    document.querySelectorAll(".video-thumb").forEach(container => {
+        const video = container.querySelector("video");
+        const btn = container.querySelector(".play-btn");
 
-    const openModal = () => {
-        const modal = document.getElementById("videoModal");
-        const modalVideo = document.getElementById("modalVideo");
+        const openModal = () => {
+            const modal = document.getElementById("videoModal");
+            const modalVideo = document.getElementById("modalVideo");
 
-        modal.style.display = "flex";
-        modalVideo.src = video.src;
-        modalVideo.play();
-    };
+            modal.style.display = "flex";
+            modalVideo.src = video.src;
+            modalVideo.play();
+        };
 
-    btn.addEventListener("click", openModal);
-    video.addEventListener("click", openModal);
-});
+        btn.addEventListener("click", openModal);
+        video.addEventListener("click", openModal);
+    });
+    // Controles
+    const modal = document.getElementById("videoModal");
+    const modalVideo = document.getElementById("modalVideo");
+    const closeBtn = document.querySelector(".close-modal");
 
-// ================= MODAL CONTROL =================
-const modal = document.getElementById("videoModal");
-const modalVideo = document.getElementById("modalVideo");
-const closeBtn = document.querySelector(".close-modal");
-
-closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-    modalVideo.pause();
-    modalVideo.src = "";
-});
-
-modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
+    closeBtn.addEventListener("click", () => {
         modal.style.display = "none";
         modalVideo.pause();
         modalVideo.src = "";
-    }
-});
+    });
+
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+            modalVideo.pause();
+            modalVideo.src = "";
+        }
+    });
 </script>

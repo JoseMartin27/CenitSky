@@ -1,28 +1,26 @@
-
-<?php include '../partials/head.php'; ?>
 <link rel="stylesheet" href="/MIS_PROYECTOS/CenitSky/public/assets/css/pages.css">
-<?php include '../partials/header.php'; ?>
+<?php 
+    include '../partials/head.php'; 
+    include '../partials/header.php';
+    $stmt = $pdo->prepare('
+            SELECT m.* FROM media m
+            JOIN categorias c ON m.categoria_id = c.categoria_id
+            WHERE c.slug = ? AND m.tipo = "video"
+            ORDER BY m.orden ASC, m.fecha DESC
+            LIMIT 3
+    ');
+    $stmt->execute(['paisajes']);
+    $videos = $stmt->fetchAll();
 
-<?php
-$stmt = $pdo->prepare('
-    SELECT m.* FROM media m
-    JOIN categorias c ON m.categoria_id = c.categoria_id
-    WHERE c.slug = ? AND m.tipo = "video"
-    ORDER BY m.orden ASC, m.fecha DESC
-    LIMIT 3
-');
-$stmt->execute(['paisajes']);
-$videos = $stmt->fetchAll();
-
-$stmt = $pdo->prepare('
-    SELECT m.* FROM media m
-    JOIN categorias c ON m.categoria_id = c.categoria_id
-    WHERE c.slug = ? AND m.tipo = "foto"
-    ORDER BY m.orden ASC, m.fecha DESC
-    LIMIT 6
-');
-$stmt->execute(['paisajes']);
-$fotos = $stmt->fetchAll();
+    $stmt = $pdo->prepare('
+            SELECT m.* FROM media m
+            JOIN categorias c ON m.categoria_id = c.categoria_id
+            WHERE c.slug = ? AND m.tipo = "foto"
+            ORDER BY m.orden ASC, m.fecha DESC
+            LIMIT 6
+    ');
+    $stmt->execute(['paisajes']);
+    $fotos = $stmt->fetchAll();
 ?>
 
 <main>

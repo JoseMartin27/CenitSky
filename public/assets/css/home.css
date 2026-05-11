@@ -1,5 +1,4 @@
-/* HERO */
-
+/* Sección del Hero */
 .hero {
     position: relative;
     padding-top: 30px;
@@ -116,7 +115,7 @@
     text-align: center;
 }
 
-/* VÍDEOS */
+/* Videos de la página principal */
 .section-videos {
     position: relative;
     z-index: 1;
@@ -169,8 +168,7 @@
 .video-title { font-size: 0.8rem; font-weight: 500; color: var(--white); margin-bottom: 3px; }
 .video-stats { font-size: 0.72rem; color: var(--gray-mid); }
 
-/* GALERÍA */
-
+/* Fotos página principal */
 .section-gallery {
     background: var(--gray-light);
     padding: 80px 0 70px;
@@ -216,8 +214,7 @@
 
 .photo-card:hover .photo-placeholder { transform: scale(1.02); }
 
-/* CONTACTO */
-
+/* Formulario de contacto */
 .section-contact {
     background: var(--white);
     padding: 60px 0;
@@ -325,7 +322,26 @@
     color: #ff8080;
 }
 
-/* RESPONSIVE HOME */
+/*  Formulario mensajes validaciones,campos con error */
+.form-group.has-error input,
+.form-group.has-error textarea {
+    border: 2px solid #e74c3c !important;
+    background-color: #fdf2f2;
+}
+/* El texto del error */
+.error-msg {
+    color: #e74c3c;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: block;
+    margin-top: 4px;
+}
+
+.form-group.has-error .toggle-track {
+    border: 1px solid #e74c3c;
+}
+
+/* Contenido responsive */
 
 @media (max-width: 900px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
@@ -339,26 +355,4 @@
     .photo-grid { grid-template-columns: repeat(2, 1fr); }
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .form-row { grid-template-columns: 1fr; }
-}
-
-/*  Formulario mensajes validaciones
-    Campo con error */
-.form-group.has-error input,
-.form-group.has-error textarea {
-    border: 2px solid #e74c3c !important; /* Rojo */
-    background-color: #fdf2f2; /* Fondo rosado suave */
-}
-
-/* El texto del error */
-.error-msg {
-    color: #e74c3c;
-    font-size: 0.8rem;
-    font-weight: bold;
-    display: block;
-    margin-top: 4px;
-}
-
-/* Asegurar que el toggle también se vea afectado si quieres */
-.form-group.has-error .toggle-track {
-    border: 1px solid #e74c3c;
 }

@@ -5,7 +5,7 @@ Web dinámica de servicios de vídeo y fotografía con drones.
 - HTML / CSS / JavaScript
 - PHP
 - MySQL
-- XAMPP (servidor local)
+- XAMPP (servidor local, apache)
 
 ## Rutas base
 - Web local: http://localhost/MIS_PROYECTOS/CenitSky/public/index.php
@@ -19,25 +19,29 @@ CENITSKY
 │   ├── index.php
 │   ├── assets/
 │   │   ├── css/
-│   │   │   ├── base.css        ← variables, reset, botones, section-label
-│   │   │   ├── layout.css      ← header, nav, footer
-│   │   │   ├── home.css        ← hero, services-bar, vídeos, galería, contacto
-│   │   │   ├── pages.css       ← categoria-hero, noticias, servicios, equipo, acerca
-│   │   │   └── admin.css       ← panel de administración
-│   │   ├── js/
-│   │   ├── images/
-│   │   ├── video/
-│   │   └── fonts/
+│   │   │   ├── base.css    ← variables, reset, botones, section-label
+│   │   │   ├── layout.css  ← header, nav, footer
+│   │   │   ├── home.css    ← hero, services-bar, vídeos, galería, contacto
+│   │   │   ├── pages.css   ← categoria-hero, noticias, servicios, equipo, acerca
+│   │   │   └── admin.css   ← panel de administración
+│   │   └── images/
+|   |          ├── cine_dron.jpg  
+│   │          ├── deporte.png 
+│   │          ├── drone_icon.png 
+│   │          ├── estructura_dron.jpg
+|   |          ├── foto_aerea.jpg
+|   |          ├── hero.jpg                             
+│   │          └── mini_4_pro.jpg 
 │   ├── pages/
-│   │   ├── paisajes.php
+│   │   ├── acerca.php
 │   │   ├── aventura.php
+│   │   ├── equipo.php
 │   │   ├── estructuras.php
 │   │   ├── noticias.php
-│   │   ├── servicios.php
-│   │   ├── equipo.php
-│   │   └── acerca.php
+│   │   ├── paisajes.php
+│   │   └── servicios.php
 │   ├── partials/
-│   │   ├── head.php            ← base.css y layout.css
+│   │   ├── head.php ← base.css y layout.css
 │   │   ├── header.php
 │   │   └── footer.php
 │   ├── sections/
@@ -57,48 +61,38 @@ CENITSKY
 │       │   └── videos/
 │       └── noticias/
 │           └── fotos/
-│
+|           └── videos/
 ├── admin/
-│   ├── login.php               ← formulario de acceso
-│   ├── index.php               ← dashboard
+│   ├── login.php ← formulario de acceso
+│   ├── index.php ← dashboard
 │   ├── assets/
 │   │   ├── css/
 │   │   │   └── admin.css
 │   │   └── js/
+|   |       └── admin.js
 │   └── pages/
 │       ├── mensajes.php
 │       ├── galeria.php
 │       ├── noticias.php
 │       └── configuracion.php
-│
+|       └── noticias_editar.php
 ├── app/
 │   ├── controllers/
-│   │   ├── login_controller.php
+│   │   ├── configuracion_controller.php
+│   │   ├── contacto_controller.php
+│   │   ├── galeria_controller.php
+│   |   ├── login_controller.php
 │   │   ├── logout_controller.php
-│   │   └── contacto_controller.php
-│   ├── models/
-│   ├── helpers/
-│   ├── config/
-│   │   ├── database.php
-│   │   └── config.php
-│   └── api/
-│       ├── v1/
-│       │   ├── contact.php
-│       │   ├── quote.php
-│       │   └── gallery.php
-│       └── middleware/
-│           ├── auth.php
-│           └── cors.php
-│
+│   │   └── mensajes_controller.php
+|   |   └── noticias_controller.php
+│   └── config/
+│       └── database.php
 ├── database/
-│   └── schema.sql
+│   └── Cenitsky.sql
 │
 ├── docs/
 │   ├── README.md
-│   ├── instalacion.md
-│   ├── base-de-datos.md
-│   └── api.md
-│
+│   └── instalacion.md
 └── .htaccess
 ```
 
@@ -135,10 +129,10 @@ CENITSKY
 - Logout: `app/controllers/logout_controller.php`
 
 Gestiona desde `admin/`:
-- Mensajes del formulario de contacto
-- Galería de fotos y vídeos por categoría
-- Noticias
-- Configuración general
+- Mensajes del formulario de contacto.
+- Galería de fotos y vídeos por categoría.
+- Creación de noticas y edición con publicación.
+- Configuración general footer y placeholder forms.
 
 ## Base de datos SQL Y Schema
 -- CENITSKY — Base de datos:

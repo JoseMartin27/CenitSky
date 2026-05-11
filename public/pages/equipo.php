@@ -1,10 +1,10 @@
-
-<?php include '../partials/head.php'; ?>
 <link rel="stylesheet" href="/MIS_PROYECTOS/CenitSky/public/assets/css/pages.css">
-<?php include '../partials/header.php'; ?>
+<?php
+    include '../partials/head.php';
+    include '../partials/header.php';
+?>
 
 <main>
-
     <!-- Hero -->
     <section class="category-hero">
         <div class="container">
@@ -155,7 +155,6 @@
             </div>
         </div>
     </section>
-
 </main>
 
 <?php include '../partials/footer.php'; ?>

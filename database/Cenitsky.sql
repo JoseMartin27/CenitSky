@@ -1,8 +1,7 @@
 CREATE DATABASE IF NOT EXISTS cenitsky CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE cenitsky;
 
--- USUARIOS
-
+-- Usuarios
 CREATE TABLE usuarios (
     usuario_id    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nombre        VARCHAR(100) NOT NULL,
@@ -12,9 +11,7 @@ CREATE TABLE usuarios (
     fecha         DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-
--- CATEGORIAS
-
+-- Categorías
 CREATE TABLE categorias (
     categoria_id  INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nombre        VARCHAR(100) NOT NULL,
@@ -28,8 +25,7 @@ INSERT INTO categorias (nombre, slug, activa) VALUES
 ('Aventura',    'aventura',    1),
 ('Estructuras', 'estructuras', 1);
 
--- MEDIA
-
+-- Media
 CREATE TABLE media (
     media_id      INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     categoria_id  INT UNSIGNED NOT NULL,
@@ -43,8 +39,7 @@ CREATE TABLE media (
     FOREIGN KEY (categoria_id) REFERENCES categorias(categoria_id) ON DELETE CASCADE
 );
 
--- NOTICIAS
-
+-- Noticias
 CREATE TABLE noticias (
     noticia_id    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     titulo        VARCHAR(200) NOT NULL,
@@ -56,8 +51,7 @@ CREATE TABLE noticias (
     fecha         DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
--- MENSAJES
-
+-- Mensajes
 CREATE TABLE mensajes (
     mensaje_id    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nombre        VARCHAR(100) NOT NULL,
@@ -68,8 +62,7 @@ CREATE TABLE mensajes (
     fecha         DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
--- CONFIGURACION
-
+-- Configuración
 CREATE TABLE configuracion (
     configuracion_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     clave            VARCHAR(100) NOT NULL UNIQUE,
@@ -85,8 +78,7 @@ INSERT INTO configuracion (clave, valor) VALUES
 ('youtube',         ''),
 ('texto_footer',    '© 2026 Cenit-Sky — Todos los derechos reservados');
 
--- ESTADISTICAS
-
+-- Estadísticas
 CREATE TABLE estadisticas (
     estadistica_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     pagina         VARCHAR(200) NOT NULL,

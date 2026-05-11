@@ -1,10 +1,10 @@
 <?php 
-// Recuperamos datos y errores de la sesión (si existen)
-$old = $_SESSION['old'] ?? [];
-$errores = $_SESSION['errores_validos'] ?? [];
+    // Recuperamos datos y errores de la sesión (si existen)
+    $old = $_SESSION['old'] ?? [];
+    $errores = $_SESSION['errores_validos'] ?? [];
 
-// Limpiamos los errores de la sesión para que no se vean al refrescar manualmente
-unset($_SESSION['errores_validos']); 
+    // Limpiamos los errores de la sesión para que no se vean al refrescar manualmente
+    unset($_SESSION['errores_validos']); 
 ?>
 
 <section class="section-contact" id="contacto">
@@ -19,7 +19,7 @@ unset($_SESSION['errores_validos']);
 
         <form class="contact-form" action="/MIS_PROYECTOS/CenitSky/app/controllers/contacto_controller.php" method="POST" novalidate>
             <div class="form-row">
-                <!-- Campo Email -->
+                <!-- Email -->
                 <div class="form-group <?php echo isset($errores['email']) ? 'has-error' : ''; ?>">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="hola@ejemplo.com" 
@@ -29,7 +29,7 @@ unset($_SESSION['errores_validos']);
                     <?php endif; ?>
                 </div>
 
-                <!-- Campo Nombre -->
+                <!-- Nombre -->
                 <div class="form-group <?php echo isset($errores['nombre']) ? 'has-error' : ''; ?>">
                     <label for="nombre">Nombre</label>
                     <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" 
@@ -54,7 +54,7 @@ unset($_SESSION['errores_validos']);
                 <?php endif; ?>
             </div>
 
-            <!-- Checkbox de Privacidad ahora integrado -->
+            <!-- Checkbox de Privacidad -->
             <div class="form-group <?php echo isset($errores['privacidad']) ? 'has-error' : ''; ?>">
                 <label class="toggle-wrap">
                     <span class="toggle-text">Acepto la política de privacidad</span>
@@ -68,7 +68,7 @@ unset($_SESSION['errores_validos']);
                 <?php endif; ?>
             </div>
 
-            <!-- Alerta general de éxito -->
+            <!-- Mensaje de envío correcto -->
             <?php if (isset($_GET['contacto']) && $_GET['contacto'] === 'ok'): ?>
                 <div class="form-alert form-alert--ok">
                     Mensaje enviado correctamente. Me pondré en contacto contigo pronto.

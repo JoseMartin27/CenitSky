@@ -1,12 +1,12 @@
-<?php include '../partials/head.php'; ?>
 <link rel="stylesheet" href="/MIS_PROYECTOS/CenitSky/public/assets/css/pages.css">
-<?php include '../partials/header.php'; ?>
-
 <?php
-require_once dirname(__DIR__, 2) . '/app/config/database.php';
-// Obtenemos las noticias publicadas
-$stmt = $pdo->query('SELECT * FROM noticias WHERE publicada = 1 ORDER BY fecha DESC');
-$noticias = $stmt->fetchAll();
+    include '../partials/head.php';
+    include '../partials/header.php'; 
+
+    require_once dirname(__DIR__, 2) . '/app/config/database.php';
+    // Obtenemos las noticias publicadas
+    $stmt = $pdo->query('SELECT * FROM noticias WHERE publicada = 1 ORDER BY fecha DESC');
+    $noticias = $stmt->fetchAll();
 ?>
 
 <main>
@@ -79,45 +79,41 @@ $noticias = $stmt->fetchAll();
 <?php include '../partials/footer.php'; ?>
 
 <script>
-function abrirModalNoticia(id) {
-    const card = document.getElementById('news-' + id);
-    if (!card) return;
+    function abrirModalNoticia(id) {
+        const card = document.getElementById('news-' + id);
+        if (!card) return;
+        // Obtener datos de la card (usamos trim para limpiar espacios accidentales)
+        const titulo = card.querySelector('.news-title').innerText.trim();
+        const fecha = card.querySelector('.news-date').innerText.trim();
+        const contenido = card.querySelector('.full-content-hidden').innerHTML.trim();
+        const imgElement = card.querySelector('.news-img');
+        // Rellenar modal
+        document.getElementById('modal-title').innerText = titulo;
+        document.getElementById('modal-date').innerText = fecha;
+        document.getElementById('modal-text').innerHTML = contenido;
 
-    // Obtener datos de la card (usamos trim para limpiar espacios accidentales)
-    const titulo = card.querySelector('.news-title').innerText.trim();
-    const fecha = card.querySelector('.news-date').innerText.trim();
-    const contenido = card.querySelector('.full-content-hidden').innerHTML.trim();
-    const imgElement = card.querySelector('.news-img');
-    
-    // Rellenar modal
-    document.getElementById('modal-title').innerText = titulo;
-    document.getElementById('modal-date').innerText = fecha;
-    document.getElementById('modal-text').innerHTML = contenido;
-    
-    const imgContainer = document.getElementById('modal-img-container');
-    if(imgElement) {
-        imgContainer.innerHTML = `<img src="${imgElement.src}" alt="${titulo}" class="modal-featured-img">`;
-    } else {
-        imgContainer.innerHTML = '';
+        const imgContainer = document.getElementById('modal-img-container');
+        if(imgElement) {
+            imgContainer.innerHTML = `<img src="${imgElement.src}" alt="${titulo}" class="modal-featured-img">`;
+        } else {
+            imgContainer.innerHTML = '';
+        }
+        // Mostrar modal
+        document.getElementById('modalNoticia').classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
 
-    // Mostrar modal
-    document.getElementById('modalNoticia').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
+    function cerrarModalNoticia() {
+        document.getElementById('modalNoticia').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+    // Cerrar al hacer clic fuera o con Escape
+    window.addEventListener('click', (e) => {
+        const modal = document.getElementById('modalNoticia');
+        if (e.target === modal) cerrarModalNoticia();
+    });
 
-function cerrarModalNoticia() {
-    document.getElementById('modalNoticia').classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-// Cerrar al hacer clic fuera o con Escape
-window.addEventListener('click', (e) => {
-    const modal = document.getElementById('modalNoticia');
-    if (e.target === modal) cerrarModalNoticia();
-});
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === "Escape") cerrarModalNoticia();
-});
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape") cerrarModalNoticia();
+    });
 </script>

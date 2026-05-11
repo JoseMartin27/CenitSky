@@ -1,4 +1,4 @@
-/* HERO DE CATEGORÍA */
+/* Hero por categorías */
 .category-hero {
     background: var(--dark);
     padding: 80px 0 30px;
@@ -20,11 +20,9 @@
     line-height: 1.7;
 }
 
-/* ==========================================================================
-   SECCIÓN NOTICIAS (GRID)
-   ========================================================================== */
+/* Sección de noticias */
    .section-news {
-    background: var(--white);
+    background:white;
     padding: 80px 0;
     min-height: auto;
 }
@@ -38,7 +36,7 @@
 .news-card {
     border-radius: var(--radius);
     overflow: hidden;
-    border: 1px solid #E0DDD8;
+    border: 1px solid #504e70;
     transition: transform var(--transition), box-shadow var(--transition);
     background: var(--white);
 }
@@ -92,9 +90,7 @@
     margin: 0;
 }
 
-/* ==========================================================================
-   MODAL DE NOTICIAS (OPTIMIZADO)
-   ========================================================================== */
+/*  Modal expansión de la notica */
 .news-modal-overlay {
     position: fixed;
     top: 0;
@@ -118,7 +114,7 @@
 }
 
 .news-modal-box {
-    background: #111116; /* Fondo oscuro sólido */
+    background: #323242;
     width: 90%;
     max-width: 850px;
     max-height: 85vh;
@@ -198,7 +194,6 @@
     margin-bottom: 30px;
 }
 
-/* EL TEXTO: Blanco con buen interlineado y sin márgenes extraños */
 .modal-article-body {
     color: rgba(255, 255, 255, 0.9) !important;
     font-size: 1.1rem;
@@ -223,7 +218,7 @@
     .modal-title-text { font-size: 1.8rem; }
 }
 
-/* SERVICIOS */
+/* Servicios */
 .section-services {
     background: var(--white);
     padding: 80px 0;
@@ -279,7 +274,7 @@
     color: var(--gold);
 }
 
-/* SOBRE NOSOTROS */
+/* Sobre nosotros */
 html, body {
     height: 100%;
     margin: 0;
@@ -335,7 +330,7 @@ main {
     .about-inner { grid-template-columns: 1fr; gap: 50px; }
 }
 
-/* EQUIPO — DRON */
+/* Equipo — Dron */
 .section-gear {
     background: var(--white);
     padding: 80px 0;
@@ -399,7 +394,7 @@ main {
     color: var(--black);
 }
 
-/* EQUIPO — FILTROS ND */
+/* Equipo — Filtros ND */
 .section-filters {
     background: var(--dark);
     padding: 80px 0;
@@ -455,7 +450,7 @@ main {
     line-height: 1.6;
 }
 
-/* EQUIPO — CALIDAD DE SALIDA */
+/* Equipo calidad de salida */
 .section-quality {
     background: var(--black);
     padding: 80px 0;
@@ -514,7 +509,7 @@ main {
     .quality-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* RESPONSIVE PAGES */
+/* Responsive */
 @media (max-width: 900px) {
     .news-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -523,7 +518,7 @@ main {
     .news-grid { grid-template-columns: 1fr; }
 }
 
-/* ── GALERÍA DE FOTOS ── */
+/* ── Galería de fotos ── */
 .section-gallery {
     background: var(--black);
     padding: 80px 0;
@@ -564,34 +559,31 @@ main {
     transform: scale(1.04);
 }
 
-/* ── GRID DE VÍDEOS (CUADRADO + ALINEADO CON GALERÍA ── */
+/* ── Grid de videos */
 .section-videos {
     background: var(--black);
     padding: 20px 20px;
 }
 
-/* mismo ancho y alineación que la galería */
 .video-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px; /* 👈 igual que la galería */
+    gap: 16px;
 }
 
-/* CARD DE VIDEO */
+/* Contendor de video */
 .video-card {
     border-radius: var(--radius);
     overflow: hidden;
 }
 
-/* CONTENEDOR CUADRADO (igual que fotos) */
 .video-thumb {
     position: relative;
-    aspect-ratio: 1 / 1; /* 🔥 clave: ahora es cuadrado */
+    aspect-ratio: 1 / 1;
     background: #1E1E2A;
     overflow: hidden;
 }
 
-/* VIDEO OCUPA TODO EL CUADRADO */
 .video-thumb video {
     position: absolute;
     inset: 0;
@@ -630,7 +622,6 @@ main {
     margin-left: 2px;
 }
 
-/* LABEL */
 .video-label {
     position: absolute;
     bottom: 10px;
@@ -649,7 +640,6 @@ main {
     color: var(--gold);
 }
 
-/* META INFO */
 .video-meta {
     padding: 8px 2px 0;
 }
@@ -666,7 +656,7 @@ main {
     color: var(--gray-mid);
 }
 
-/* ── RESPONSIVE IGUAL QUE GALERÍA ── */
+/* Diseño responsive */
 @media (max-width: 900px) {
     .video-grid {
         grid-template-columns: repeat(2, 1fr);

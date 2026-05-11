@@ -1,5 +1,5 @@
-/* Login */
 
+/* Login */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -163,16 +163,13 @@ body {
 }
 .login-back:hover { color: #fff; }
 
-/* 
-   ADMIN LAYOUT
-*/
+/* Admin layout */
 .admin-wrap {
     display: flex;
     min-height: 100vh;
     background: #0D0D14;
 }
 
-/* ─── Sidebar ─── */
 .admin-sidebar {
     width: 240px;
     flex-shrink: 0;
@@ -254,7 +251,7 @@ body {
 }
 .sidebar-web:hover { color: #9090BB; }
 
-/* ─── Main ─── */
+/* ─── Menu inicio ─── */
 .admin-main {
     margin-left: 240px;
     flex: 1;
@@ -264,7 +261,7 @@ body {
     gap: 32px;
 }
 
-/* ─── Topbar ─── */
+/* ─── Barra lateral ─── */
 .admin-topbar {
     display: flex;
     align-items: center;
@@ -303,7 +300,7 @@ body {
     color: #fff;
 }
 
-/* ─── Stats ─── */
+/* ─── PopUps ─── */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -427,7 +424,7 @@ body {
     text-align: center;
 }
 
-/* MENSAJES */
+/* Mensajes */
 
 .mensajes-list {
     display: flex;
@@ -539,7 +536,7 @@ body {
     color: #fff;
 }
 
-/* MODAL */
+/* Modal */
 
 .modal-overlay {
     display: none;
@@ -637,9 +634,7 @@ body {
     color: rgba(255,255,255,0.8);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   GALERÍA ADMIN
-═══════════════════════════════════════════════════════════════ */
+/* Galería admin */
 .upload-form {
     padding: 24px;
     display: flex;
@@ -797,42 +792,6 @@ body {
     text-align: center;
     width: 100%;
 }
-/* Ajustes específicos para el Formulario dentro del Modal */
-.modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    margin-top: 8px;
-}
-
-.btn-modal-save {
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #6C6C9A, #4A4A7A);
-    border: none;
-    border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #fff;
-    cursor: pointer;
-    transition: opacity 0.25s ease;
-}
-
-.btn-modal-cancel {
-    padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(108, 108, 154, 0.3);
-    border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.6);
-    cursor: pointer;
-    transition: all 0.25s ease;
-}
-
-.btn-modal-save:hover, .btn-modal-cancel:hover {
-    opacity: 0.8;
-}
 
 @media (max-width: 1200px) {
     .galeria-grid { grid-template-columns: repeat(3, 1fr); }
@@ -853,9 +812,7 @@ body {
     color: #fff;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   NOTICIAS ADMIN
-═══════════════════════════════════════════════════════════════ */
+/* Noticias admin */
 .noticias-list {
     display: flex;
     flex-direction: column;
@@ -940,9 +897,7 @@ body {
     border: 1px solid rgba(180,140,50,0.3);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   CONFIGURACIÓN ADMIN
-═══════════════════════════════════════════════════════════════ */
+/* Configuración panel admin */
 .config-alert {
     padding: 12px 16px;
     border-radius: 8px;
