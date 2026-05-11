@@ -242,7 +242,7 @@ CREATE TABLE estadisticas (
 - **Foto:** 48MP RAW + JPEG
 
 ## Datos
-1 
+V1.0.0 versión estable 
 
 ## Autor
 JoseMartin
