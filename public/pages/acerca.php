@@ -1,11 +1,14 @@
-<?php include '../partials/head.php'; ?>
+
 <link rel="stylesheet" href="/MIS_PROYECTOS/CenitSky/public/assets/css/pages.css">
-<?php include '../partials/header.php'; ?>
+<?php
+    include '../partials/head.php';
+    include '../partials/header.php';
+?>
 
 <main>
     <section class="category-hero">
         <div class="container">
-            <h1 class="category-title">Acerca de</h1>
+            <h1 class="category-title">Conocenos</h1>
             <p class="category-desc">
                 Conoce quiénes somos, cómo trabajamos y qué nos hace diferentes.
             </p>

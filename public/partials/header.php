@@ -27,7 +27,7 @@
         </button>
     </div>
 </header>
-<!-- js en pruebas pendiente separar todo a la carpeta js -->
+
 <script>
     const menuBtn = document.querySelector('.menuPhone');
     const nav = document.querySelector('nav');

@@ -1,0 +1,89 @@
+CREATE DATABASE IF NOT EXISTS cenitsky CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE cenitsky;
+
+-- Usuarios
+CREATE TABLE usuarios (
+    usuario_id    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre        VARCHAR(100) NOT NULL,
+    email         VARCHAR(150) NOT NULL UNIQUE,
+    password      VARCHAR(255) NOT NULL,
+    rol           ENUM('admin','superadmin') NOT NULL DEFAULT 'admin',
+    fecha         DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Categorías
+CREATE TABLE categorias (
+    categoria_id  INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre        VARCHAR(100) NOT NULL,
+    slug          VARCHAR(100) NOT NULL UNIQUE,
+    activa        TINYINT(1) NOT NULL DEFAULT 1
+);
+
+-- Datos iniciales
+INSERT INTO categorias (nombre, slug, activa) VALUES
+('Paisajes',    'paisajes',    1),
+('Aventura',    'aventura',    1),
+('Estructuras', 'estructuras', 1);
+
+-- Media
+CREATE TABLE media (
+    media_id      INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    categoria_id  INT UNSIGNED NOT NULL,
+    tipo          ENUM('foto','video') NOT NULL,
+    archivo       VARCHAR(255) NOT NULL,
+    titulo        VARCHAR(150),
+    descripcion   TEXT,
+    destacada     TINYINT(1) NOT NULL DEFAULT 0,
+    orden         INT UNSIGNED NOT NULL DEFAULT 0,
+    fecha         DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (categoria_id) REFERENCES categorias(categoria_id) ON DELETE CASCADE
+);
+
+-- Noticias
+CREATE TABLE noticias (
+    noticia_id    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    titulo        VARCHAR(200) NOT NULL,
+    slug          VARCHAR(200) NOT NULL UNIQUE,
+    resumen       VARCHAR(300),
+    contenido     TEXT NOT NULL,
+    imagen        VARCHAR(255),
+    publicada     TINYINT(1) NOT NULL DEFAULT 0,
+    fecha         DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Mensajes
+CREATE TABLE mensajes (
+    mensaje_id    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre        VARCHAR(100) NOT NULL,
+    email         VARCHAR(150) NOT NULL,
+    direccion     VARCHAR(200),
+    mensaje       TEXT NOT NULL,
+    leido         TINYINT(1) NOT NULL DEFAULT 0,
+    fecha         DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Configuración
+CREATE TABLE configuracion (
+    configuracion_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    clave            VARCHAR(100) NOT NULL UNIQUE,
+    valor            TEXT
+);
+
+-- Datos iniciales
+INSERT INTO configuracion (clave, valor) VALUES
+('nombre_sitio',    'Cenit-Sky'),
+('email_contacto',  'hola@cenitsky.com'),
+('telefono',        ''),
+('instagram',       ''),
+('youtube',         ''),
+('texto_footer',    '© 2026 Cenit-Sky — Todos los derechos reservados');
+
+-- Estadísticas
+CREATE TABLE estadisticas (
+    estadistica_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    pagina         VARCHAR(200) NOT NULL,
+    categoria_id   INT UNSIGNED,
+    ip             VARCHAR(45),
+    fecha          DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (categoria_id) REFERENCES categorias(categoria_id) ON DELETE SET NULL
+);

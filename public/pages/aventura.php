@@ -1,10 +1,30 @@
-
-<?php include '../partials/head.php'; ?>
 <link rel="stylesheet" href="/MIS_PROYECTOS/CenitSky/public/assets/css/pages.css">
-<?php include '../partials/header.php'; ?>
+<?php
+    include '../partials/head.php';
+    include '../partials/header.php';
+
+    $stmt = $pdo->prepare('
+        SELECT m.* FROM media m
+        JOIN categorias c ON m.categoria_id = c.categoria_id
+        WHERE c.slug = ? AND m.tipo = "video"
+        ORDER BY m.orden ASC, m.fecha DESC
+        LIMIT 3
+    ');
+    $stmt->execute(['aventura']);
+    $videos = $stmt->fetchAll();
+
+    $stmt = $pdo->prepare('
+        SELECT m.* FROM media m
+        JOIN categorias c ON m.categoria_id = c.categoria_id
+        WHERE c.slug = ? AND m.tipo = "foto"
+        ORDER BY m.orden ASC, m.fecha DESC
+        LIMIT 6
+    ');
+    $stmt->execute(['aventura']);
+    $fotos = $stmt->fetchAll();
+?>
 
 <main>
-
     <section class="category-hero">
         <div class="container">
             <h1 class="category-title">Aventura</h1>
@@ -18,59 +38,47 @@
     <section class="section-videos">
         <div class="container">
             <h2 class="section-label">Vídeos</h2>
-            <div class="video-grid">
-
-                <div class="video-card video-card--short">
-                    <div class="video-thumb">
-                        <video src="/public/assets/video/aventura_short1.mp4" autoplay loop muted playsinline></video>
-                        <span class="video-label">Sh<span class="dot">●</span>t 1</span>
-                    </div>
-                    <div class="video-meta">
-                        <p class="video-title">Descenso en MTB</p>
-                        <p class="video-stats">0:50 · Aventura</p>
-                    </div>
+            <?php if(empty($videos)): ?>
+                <p style="color: var(--gray-mid); text-align:center; padding: 40px 0;">No hay vídeos todavía.</p>
+            <?php else: ?>
+                <div class="video-grid">
+                    <?php foreach($videos as $i => $v): ?>
+                        <div class="video-card <?php echo $i === 1 ? 'video-card--main' : 'video-card--short'; ?>">
+                            <div class="video-thumb">
+                                <video src="<?php echo htmlspecialchars($v['archivo']); ?>" autoplay loop muted playsinline></video>
+                                <span class="video-label"><?php echo htmlspecialchars($v['titulo'] ?? ''); ?></span>
+                            </div>
+                            <div class="video-meta">
+                                <p class="video-title"><?php echo htmlspecialchars($v['titulo'] ?? ''); ?></p>
+                                <p class="video-stats"><?php echo htmlspecialchars($v['descripcion'] ?? ''); ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
-
-                <div class="video-card video-card--main">
-                    <div class="video-thumb">
-                        <video src="/public/assets/video/aventura_main.mp4" autoplay loop muted playsinline></video>
-                        <span class="video-label">Vídeo <span class="dot">●</span>incipal</span>
-                    </div>
-                    <div class="video-meta">
-                        <p class="video-title">Ruta de trail running</p>
-                        <p class="video-stats">4:10 · Aventura</p>
-                    </div>
-                </div>
-
-                <div class="video-card video-card--short">
-                    <div class="video-thumb">
-                        <video src="/public/assets/video/aventura_short2.mp4" autoplay loop muted playsinline></video>
-                        <span class="video-label">Sh<span class="dot">●</span>t 2</span>
-                    </div>
-                    <div class="video-meta">
-                        <p class="video-title">Kayak en el río</p>
-                        <p class="video-stats">1:10 · Aventura</p>
-                    </div>
-                </div>
-
-            </div>
+            <?php endif; ?>
         </div>
     </section>
 
     <section class="section-gallery">
         <div class="container">
             <h2 class="section-label">Fotos</h2>
-            <div class="photo-grid">
-                <div class="photo-card"><div class="photo-placeholder"><span>Aventura 1</span></div></div>
-                <div class="photo-card"><div class="photo-placeholder"><span>Aventura 2</span></div></div>
-                <div class="photo-card"><div class="photo-placeholder"><span>Aventura 3</span></div></div>
-                <div class="photo-card"><div class="photo-placeholder"><span>Aventura 4</span></div></div>
-                <div class="photo-card"><div class="photo-placeholder"><span>Aventura 5</span></div></div>
-                <div class="photo-card"><div class="photo-placeholder"><span>Aventura 6</span></div></div>
-            </div>
+            <?php if(empty($fotos)): ?>
+                <p style="color: var(--gray-mid); text-align:center; padding: 40px 0;">No hay fotos todavía.</p>
+            <?php else: ?>
+                <div class="photo-grid">
+                    <?php foreach($fotos as $foto): ?>
+                        <div class="photo-card">
+                            <div class="photo-placeholder">
+                                <img src="<?php echo htmlspecialchars($foto['archivo']); ?>"
+                                     alt="<?php echo htmlspecialchars($foto['titulo'] ?? ''); ?>"
+                                     style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;">
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </section>
-
 </main>
 
 <?php include '../partials/footer.php'; ?>
