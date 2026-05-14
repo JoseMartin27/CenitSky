@@ -18,5 +18,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/MIS_PROYECTOS/CenitSky/public/assets/css/base.css">
     <link rel="stylesheet" href="/MIS_PROYECTOS/CenitSky/public/assets/css/layout.css">
+    <link rel="stylesheet" href="/MIS_PROYECTOS/CenitSky/admin/assets/css/admin.css">
 </head>
 <body>

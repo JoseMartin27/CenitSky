@@ -21,8 +21,8 @@
                     </svg>
                 </a>
             <?php endif; ?>
-            <a href="#">Privacidad</a>
-            <a href="#">Aviso legal</a>
+            <a href="/MIS_PROYECTOS/CenitSky/public/index.php#contacto">Privacidad</a>
+            <a href="/MIS_PROYECTOS/CenitSky/public/pages/acerca.php">Aviso legal</a>
         </div>
     </div>
 </footer>

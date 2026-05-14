@@ -31,14 +31,13 @@ $fotos = $stmt->fetchAll();
     </div>
 </section>
 
-<!-- Imagen ampliada -->
 
 <div id="imageModal" class="image-modal">
-
-    <span class="close-modal">&times;</span>
-
+    <!-- Botón de cerrar con ID único -->
+    <span class="close-modal" id="closeBtnModal">&times;</span>
+    <span class="nav-btn prev" id="prevBtn">&#10094;</span>
     <img id="modalImage" class="modal-content">
-
+    <span class="nav-btn next" id="nextBtn">&#10095;</span>
 </div>
 
 <!-- Imagenes y videos -->
@@ -64,7 +63,6 @@ $fotos = $stmt->fetchAll();
 }
 
 /* Modal */
-
 .image-modal{
     display:none;
     position:fixed;
@@ -79,79 +77,124 @@ $fotos = $stmt->fetchAll();
     max-height:90%;
     border-radius:12px;
 }
-.close-modal{
-    position:absolute;
-    top:20px;
-    right:30px;
-    font-size:40px;
-    color:white;
-    cursor:pointer;
-    z-index:10000;
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    z-index: 99999;
+    padding: 20px; 
+    line-height: 0.8;
+    user-select: none;
+    transition: transform 0.2s;
+}
+.close-modal:hover {
+    color: #ff4d4d;
+    transform: scale(1.2);
+}
+.nav-btn {
+    z-index: 99998;
+}
+/* Botones de navegación */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 16px;
+    user-select: none;
+    transition: 0.3s;
+    z-index: 10001;
+}
+
+.nav-btn:hover {
+    color: #bbb;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+@media (max-width: 768px) {
+    .nav-btn {
+        font-size: 40px;
+        padding: 10px;
+    }
 }
 </style>
 
 <!-- Lógica de apertura,cierre y movimiento -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const modal = document.getElementById("imageModal");
-        const modalImg = document.getElementById("modalImage");
-        const closeBtn = document.querySelector(".close-modal");
-        const images = document.querySelectorAll(".photo-item");
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const closeBtn = document.getElementById("closeBtnModal"); 
+    const images = document.querySelectorAll(".photo-item");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
-        let currentIndex = 0;
+    let currentIndex = 0;
 
-        // Abrir
-        images.forEach((img, index) => {
+    function openModal(index) {
+        currentIndex = index;
+        modal.style.display = "flex";
+        modalImg.src = images[currentIndex].src;
+        document.body.style.overflow = "hidden";
+    }
 
-            img.addEventListener("click", function () {
-                currentIndex = index;
-                openModal(img.src);
-            });
-        });
+    function closeModal() {
+        console.log("Cerrando modal..."); 
+        modal.style.display = "none";
+        modalImg.src = "";
+        document.body.style.overflow = "auto";
+    }
 
-        function openModal(src){
-            modal.style.display = "flex";
-            modalImg.src = src;
+    // Evento de la X
+    if (closeBtn) {
+        closeBtn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeModal();
+        };
+    }
+
+    // Cerrar 
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            closeModal();
         }
+    };
 
-        // Cerrar
-        function closeModal(){
-            modal.style.display = "none";
-            modalImg.src = "";
-        }
-
-        closeBtn.addEventListener("click", closeModal);
-        modal.addEventListener("click", function(e){
-
-            if(e.target === modal){
-                closeModal();
-            }
-        });
-
-        // Captura de teclado para pasar de fotos
-        document.addEventListener("keydown", function(e){
-
-            if(modal.style.display !== "flex") return;
-            // Derecha
-            if(e.key === "ArrowRight"){
-                currentIndex++;
-                if(currentIndex >= images.length){
-                    currentIndex = 0;
-                }
-                modalImg.src = images[currentIndex].src;
-            }
-            // Izquierda
-            if(e.key === "ArrowLeft"){
-                currentIndex--;
-                if(currentIndex < 0){
-                    currentIndex = images.length - 1;
-                }
-                modalImg.src = images[currentIndex].src;
-            }
-            // Escape
-            if(e.key === "Escape"){
-                closeModal();
-            }
-        });
+    // Navegación y apertura 
+    images.forEach((img, index) => {
+        img.onclick = () => openModal(index);
     });
+
+    prevBtn.onclick = (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        modalImg.src = images[currentIndex].src;
+    };
+
+    nextBtn.onclick = (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % images.length;
+        modalImg.src = images[currentIndex].src;
+    };
+
+    // Tecla Escape
+    document.onkeydown = function(e) {
+        if (e.key === "Escape") closeModal();
+    };
+});
 </script>

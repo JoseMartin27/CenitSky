@@ -15,10 +15,8 @@
     $ultimos = $pdo->query('SELECT * FROM mensajes ORDER BY fecha DESC LIMIT 5')->fetchAll();
 
     include '../public/partials/head.php';
+    //Se mueve este enlace al head para evitar recargas lentas del css <link rel="stylesheet" href="/MIS_PROYECTOS/CenitSky/admin/assets/css/admin.css">
 ?>
-
-<link rel="stylesheet" href="/MIS_PROYECTOS/CenitSky/admin/assets/css/admin.css">
-
         <div class="admin-wrap">
             <!-- Menú lateral -->
             <aside class="admin-sidebar">
@@ -164,7 +162,7 @@
                             </svg>
                         </div>
                         <div class="stat-info">
-                            <span class="stat-value">0</span>
+                            <span class="stat-value">12</span>
                             <span class="stat-label">Visitas hoy</span>
                         </div>
                     </div>

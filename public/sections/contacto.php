@@ -48,7 +48,7 @@
 
             <div class="form-group <?php echo isset($errores['mensaje']) ? 'has-error' : ''; ?>">
                 <label for="mensaje">Mensaje</label>
-                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntame..." required><?php echo htmlspecialchars($old['mensaje'] ?? ''); ?></textarea>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntame más..." required><?php echo htmlspecialchars($old['mensaje'] ?? ''); ?></textarea>
                 <?php if(isset($errores['mensaje'])): ?>
                     <span class="error-msg"><?php echo $errores['mensaje']; ?></span>
                 <?php endif; ?>

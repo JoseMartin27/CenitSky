@@ -19,7 +19,7 @@
     <!-- Dron -->
     <section class="section-gear">
         <div class="container">
-            <h2 class="section-label">El <span>Dron</span></h2>
+            <h2 class="section-label"></h2>
             <div class="drone-card">
                 <div class="drone-img">
                 <img src="/MIS_PROYECTOS/CenitSky/public/assets/images/mini_4_pro.jpg" alt="DJI Mini 4 Pro">

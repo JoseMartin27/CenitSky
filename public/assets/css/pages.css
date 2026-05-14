@@ -60,6 +60,7 @@
 
 .news-meta {
     padding: 24px;
+
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -274,24 +275,71 @@
     color: var(--gold);
 }
 
-/* Sobre nosotros */
-html, body {
-    height: 100%;
-    margin: 0;
+/* Tablets */
+@media (max-width: 1024px) {
+    .services-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .section-services {
+        padding: 60px 0;
+    }
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+/* Tablets pequeñas */
+@media (max-width: 768px) {
+    .services-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .section-services {
+        padding: 50px 0;
+    }
+
+    .srv-meta {
+        padding: 20px;
+    }
+
+    .srv-title {
+        font-size: 1.2rem;
+    }
 }
 
-main {
-    flex: 1;
+/* Móviles */
+@media (max-width: 480px) {
+    .section-services {
+        padding: 40px 0;
+    }
+
+    .srv-meta {
+        padding: 16px;
+    }
+
+    .srv-title {
+        font-size: 1.1rem;
+    }
+
+    .srv-desc {
+        font-size: 0.82rem;
+    }
+
+    .srv-price {
+        font-size: 0.85rem;
+    }
 }
+
+
+/* --- Sobre Nosotros --- */
+
+html, body { height: 100%; margin: 0; }
+body { display: flex; flex-direction: column; min-height: 100vh; }
+main { flex: 1; }
+
 .section-about {
-    background: var(--gray-light);
-    padding: 200px 0 ;
+    background: var(--border);
+    padding: 100px 0;
 }
 
 .about-inner {
@@ -308,6 +356,7 @@ main {
     line-height: 1.2;
     color: var(--black);
 }
+
 .about-title em {
     font-style: italic;
     color: var(--gold);
@@ -325,25 +374,126 @@ main {
     line-height: 1.7;
 }
 
+/* --- Estadísticas --- */
+.section-stats {
+    padding: 100px 0;
+    background: var(--dark);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    gap: 0;
+}
+
+.stat-item {
+    padding: 20px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+.stat-item:last-child {
+    border-right: none;
+}
+
+.stat-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.45);
+    font-weight: 500;
+}
+
+/* --- Valores --- */
+.section-values {
+    padding: 100px 0;
+    background: var(--black);
+}
+
+.values-main-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--white);
+    margin-bottom: 56px;
+    font-weight: 700;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+}
+
+.value-card {
+    border-left: 1px solid var(--gold-dark);
+    padding-left: 28px;
+}
+
+.value-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--white);
+}
+
+.value-card p {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.8;
+}
+
+/* --- Responsive --- */
 @media (max-width: 900px) {
-    .services-cards { grid-template-columns: 1fr; }
-    .about-inner { grid-template-columns: 1fr; gap: 50px; }
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .section-about { padding: 80px 0; }
+    .section-stats { padding: 80px 0; }
+    .section-values { padding: 80px 0; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.06); }
+    .stat-item:last-child { border-bottom: none; }
+    .values-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+
+@media (max-width: 640px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stat-number { font-size: 2.6rem; }
 }
 
 /* Equipo — Dron */
 .section-gear {
-    background: var(--white);
+    background: var(--border);
     padding: 80px 0;
 }
 
 .drone-card {
     display: grid;
+    border-radius: 2px;
     grid-template-columns: 1fr 1.4fr;
     gap: 60px;
     align-items: center;
 }
 
-.drone-img .photo-placeholder { aspect-ratio: 4/3; border-radius: var(--radius); }
+.drone-img img,img.drone-img {
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    border-radius: 25px;
+    display: block;
+}
+
+.photo-placeholder { aspect-ratio: 4/3; border-radius: var(--radius); }
 
 .drone-name {
     font-family: var(--font-display);
@@ -430,12 +580,12 @@ main {
     border: 3px solid var(--border);
 }
 
-.nd4   { background: rgba(108,108,154,0.2); }
-.nd8   { background: rgba(108,108,154,0.35); }
-.nd16  { background: rgba(108,108,154,0.5); }
-.nd64  { background: rgba(108,108,154,0.65); }
-.nd256 { background: rgba(108,108,154,0.8); }
-.ndpl  { background: linear-gradient(135deg, rgba(108,108,154,0.6), rgba(74,74,122,0.9)); }
+.nd4 {background: rgba(40, 30, 20, 0.18);}
+.nd8 {background: rgba(55, 40, 25, 0.28);}
+.nd16 {background: rgba(70, 50, 30, 0.38);}
+.nd64 {background: rgba(85, 60, 35, 0.52);}
+.nd256 {background: rgba(100, 70, 40, 0.68);}
+.ndpl {background: rgba(30, 50, 60, 0.26);}
 
 .filter-name {
     font-family: var(--font-display);
